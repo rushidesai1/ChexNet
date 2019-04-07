@@ -4,15 +4,15 @@ import java.awt.RenderingHints
 import java.awt.geom.AffineTransform
 import java.awt.image.{AffineTransformOp, BufferedImage, DataBufferByte, RescaleOp}
 import java.io.{ByteArrayOutputStream, File}
-import java.nio.file.{Files, Paths}
+
 
 import edu.chexpert.helper.SparkHelper
 import javax.imageio.ImageIO
 import org.apache.spark.mllib.linalg.Vectors
-import org.apache.spark.mllib.regression.LabeledPoint
-import org.apache.spark.mllib.util.MLUtils
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.Row
+
+
 
 case class ImageRow(file:String,width:Int,height:Int,channels:Int=1,data:Array[Byte])
 case class Label(Path:String,
@@ -55,24 +55,9 @@ object App {
   }
 
 
-
-  def mapOutputLocation(imagePath:String):String={
-    imagePath.substring(imagePath.lastIndexOf("/")+1)
-
-  }
   //Now just writing to local file , will update later
   def saveImage(img:BufferedImage,output:String="output.jpg"): Unit ={
     ImageIO.write(img, "jpg", new File(output))
-  }
-
-  def adjustPixel(img:BufferedImage,scaleFactor:Float,offset:Float)={
-
-    val res = new BufferedImage(img.getWidth, img.getHeight, BufferedImage.TYPE_BYTE_GRAY)
-
-    val rescaleOp = new RescaleOp(scaleFactor, offset, null)
-    rescaleOp.filter(img, res)
-
-    res
   }
 
 
@@ -175,43 +160,16 @@ object App {
 
     val output=resized.union(flipped).zipWithIndex()
 
+    //save labels
     output.map(o=>o._1.label.copy(Path = o._2.toString)).repartition(1).toDS().write.format("csv").option("header", "true").save("output/labels")
 
-    val imagesAsText=output.map(o=>o._2.toString +" "+ bufferedAsText(o._1.bufferedImage)).toDS().write.format("csv").save("output/images")
+    //save images as text
+    output.map(o=>o._2.toString +" "+ bufferedAsText(o._1.bufferedImage)).toDS().write.format("text").save("output/images/txt")
 
-
-
-
-//
-//   val res=images.map(i=>(i,asBufferedImage(i))).map{case (ir,b)=>(ir,resizeBufferedImage(b,244,244))}.
-//     map{case (ir,b)=>(ir,flipBufferedImage(b))}.
-//     map{case (ir,b)=>saveImage(b,mapOutputLocation(ir.file))}.count()
-//
-
-    import spark.implicits._
-
-    //val labels=images.map(asBufferedImage(_)).map(asVector(_)).zipWithIndex().map{case (v,id)=>LabeledPoint(id,v)}.toDF("label","features")
-
-    import org.apache.spark.ml.feature.StandardScaler
-
-//    val scaler = new StandardScaler()
-//      .setInputCol("features")
-//      .setOutputCol("scaledFeatures")
-//      .setWithStd(true)
-//      .setWithMean(true)
-//
-//    // Compute summary statistics by fitting the StandardScaler.
-//    val scalerModel = scaler.fit(df)
-//
-//    // Normalize each feature to have unit standard deviation.
-//    val scaledData = scalerModel.transform(df)
-//    //
-////    val pos = LabeledPoint(1.0, Vectors.dense(1.0, 0.0, 3.0))
-////
-////
-////    val df = sc.parallelize(Seq(pos))
-//    MLUtils.saveAsLibSVMFile(df,"data/foo")
-
+    //save images as jpg (only works for local , will break for hdfs or s3
+    val dir="output/images/jpg/"
+    new File(dir).mkdirs()
+    output.map(o=>saveImage(o._1.bufferedImage,dir+o._2.toString+".jpg")).count()
 
    sc.stop()
   }
