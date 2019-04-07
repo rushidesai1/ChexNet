@@ -4,7 +4,7 @@
 		module="chest_preprocessing_2.12"
 		revision="0.1"
 		status="integration"
-		publication="20190401171948"
+		publication="20190403001059"
 	>
 		<license name="MIT" url="http://opensource.org/licenses/MIT" />
 		<description>

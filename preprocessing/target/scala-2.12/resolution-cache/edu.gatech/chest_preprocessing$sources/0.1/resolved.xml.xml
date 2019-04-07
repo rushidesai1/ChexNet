@@ -4,7 +4,7 @@
 		module="chest_preprocessing$sources"
 		revision="0.1"
 		status="integration"
-		publication="20190401202939"
+		publication="20190403001102"
 	/>
 	<configurations>
 		<conf name="compile" visibility="public" description=""/>

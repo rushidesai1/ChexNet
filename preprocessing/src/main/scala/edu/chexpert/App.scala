@@ -3,28 +3,44 @@ package com.edu.chexpert
 import java.awt.RenderingHints
 import java.awt.geom.AffineTransform
 import java.awt.image.{AffineTransformOp, BufferedImage, DataBufferByte, RescaleOp}
-import java.io.File
+import java.io.{ByteArrayOutputStream, File}
+import java.nio.file.{Files, Paths}
 
 import edu.chexpert.helper.SparkHelper
 import javax.imageio.ImageIO
 import org.apache.spark.mllib.linalg.Vectors
+import org.apache.spark.mllib.regression.LabeledPoint
+import org.apache.spark.mllib.util.MLUtils
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.Row
 
 case class ImageRow(file:String,width:Int,height:Int,channels:Int=1,data:Array[Byte])
+case class Label(Path:String,
+                  Sex:String,
+                  Age:String,
+                  `Frontal/Lateral`:String,
+                 `AP/PA`:String,
+                  `No Finding`:String,
+                  `Enlarged Cardiomediastinum`:String,
+                  Cardiomegaly:String,
+                  `Lung Opacity`:String,
+                  `Lung Lesion`:String,
+                  Edema:String,
+                  Consolidation:String,
+                  Pneumonia:String,
+                  Atelectasis:String,
+                  Pneumothorax:String,
+                  `Pleural Effusion`:String,
+                  `Pleural Other`:String,
+                  Fracture:String,
+                  `Support Devices`:String)
+
+
+case class ChexImage(bufferedImage: BufferedImage,label: Label)
+case class ImageText(id:String,bytes:String)
+
 
 object App {
-
-
-
-  def zeroMean(arr:Array[Byte]):Array[Byte]={
-    val mean=arr.map(_.toInt).sum/arr.length
-
-    val std=Math.sqrt(arr.map(x=>(x.toInt - mean)*(x.toInt - mean)).sum/arr.length)
-
-    arr.map(x=>(x-mean)).map(_.toByte)
-
-  }
 
   def asVector(img:BufferedImage)={
     var arr:Array[Byte]=img.getRaster.getDataBuffer.asInstanceOf[DataBufferByte].getData
@@ -32,6 +48,12 @@ object App {
     val testDouble = arr.map(x=>x.toDouble).to[scala.Vector].toArray
     Vectors.dense(testDouble)
   }
+
+  def dropPrefix(s:String,pre:String):String={
+    val trimmed=s.substring(s.indexOf(pre))
+    trimmed.replaceAll(pre,"")
+  }
+
 
 
   def mapOutputLocation(imagePath:String):String={
@@ -91,7 +113,7 @@ object App {
     val height=row.getAs[Any]("height").asInstanceOf[Int]
     val image1Dta:Array[Byte]=row.getAs[Any]("data").asInstanceOf[Array[Byte]]
 
-    ImageRow(origin,width,height,1,zeroMean(image1Dta))
+    ImageRow(origin,width,height,1,image1Dta)
   }
 
 
@@ -104,28 +126,92 @@ object App {
     return op.filter(bufferedImage, null)
   }
 
+  def bufferedAsText(bufferedImage: BufferedImage, separator:String=" "):String={
+    import javax.imageio.ImageIO
+    val baos = new ByteArrayOutputStream()
+    ImageIO.write(bufferedImage, "jpg", baos)
+    baos.flush
+    val imageInByte: Array[Byte] = baos.toByteArray
+    return imageInByte.map(_.toString).mkString(separator)
+
+  }
+
 
 
 
   def main(args: Array[String]): Unit = {
 
 
+
     val spark = SparkHelper.spark
     val sc = spark.sparkContext
 
+    import spark.implicits._
 
+
+
+    //example for s3 : https://stackoverflow.com/questions/27914145/read-files-recursively-from-sub-directories-with-spark-from-s3-or-local-filesyst
     //load images
     spark.read.format("image")
       .option("dropInvalid", true)
-      .load("images").createOrReplaceTempView("images")
+      .load("images/CheXpert-v1.0-small/train/*/*").createOrReplaceTempView("images")
 
 
     val images: RDD[ImageRow] =spark.sql("select image.origin,image.width,image.height,image.nChannels, image.mode , image.data from images")
       .rdd.map(asImageRow(_))
 
-   val res=images.map(i=>(i,asBufferedImage(i))).map{case (ir,b)=>(ir,resizeBufferedImage(b,244,244))}.
-     map{case (ir,b)=>(ir,flipBufferedImage(b))}.
-     map{case (ir,b)=>saveImage(b,mapOutputLocation(ir.file))}.count()
+    val labels= spark.read.format("csv").option("header", "true").load("labels/train.csv").as[Label].rdd
+    val labelsPrefix="CheXpert-v1.0-small/train/"
+
+    val adjustedImages=images.map(i=>i.copy(file = dropPrefix(i.file,labelsPrefix) )).map(i=>(i.file,i))
+
+    val adjustedLabels=labels.map(l=>l.copy(Path = dropPrefix(l.Path,labelsPrefix))).map(l=>(l.Path,l))
+
+    val data: RDD[ChexImage] =adjustedImages.join(adjustedLabels).map{case (path,(imageRow,label))=>ChexImage(asBufferedImage(imageRow),label)}
+
+    val resized: RDD[ChexImage] =data.map(i=>i.copy(bufferedImage = resizeBufferedImage(i.bufferedImage,224,244)))
+
+    val flipped: RDD[ChexImage] =resized.map(i=>i.copy(bufferedImage = flipBufferedImage(i.bufferedImage)))
+
+    val output=resized.union(flipped).zipWithIndex()
+
+    output.map(o=>o._1.label.copy(Path = o._2.toString)).repartition(1).toDS().write.format("csv").option("header", "true").save("output/labels")
+
+    val imagesAsText=output.map(o=>o._2.toString +" "+ bufferedAsText(o._1.bufferedImage)).toDS().write.format("csv").save("output/images")
+
+
+
+
+//
+//   val res=images.map(i=>(i,asBufferedImage(i))).map{case (ir,b)=>(ir,resizeBufferedImage(b,244,244))}.
+//     map{case (ir,b)=>(ir,flipBufferedImage(b))}.
+//     map{case (ir,b)=>saveImage(b,mapOutputLocation(ir.file))}.count()
+//
+
+    import spark.implicits._
+
+    //val labels=images.map(asBufferedImage(_)).map(asVector(_)).zipWithIndex().map{case (v,id)=>LabeledPoint(id,v)}.toDF("label","features")
+
+    import org.apache.spark.ml.feature.StandardScaler
+
+//    val scaler = new StandardScaler()
+//      .setInputCol("features")
+//      .setOutputCol("scaledFeatures")
+//      .setWithStd(true)
+//      .setWithMean(true)
+//
+//    // Compute summary statistics by fitting the StandardScaler.
+//    val scalerModel = scaler.fit(df)
+//
+//    // Normalize each feature to have unit standard deviation.
+//    val scaledData = scalerModel.transform(df)
+//    //
+////    val pos = LabeledPoint(1.0, Vectors.dense(1.0, 0.0, 3.0))
+////
+////
+////    val df = sc.parallelize(Seq(pos))
+//    MLUtils.saveAsLibSVMFile(df,"data/foo")
+
 
    sc.stop()
   }
