@@ -1,3 +1,5 @@
+import sbtassembly.AssemblyKeys.{assemblyJarName, assemblyMergeStrategy}
+import sbtassembly.{MergeStrategy, PathList}
 
 lazy val projectName = "chest_preprocessing"
 lazy val projectVersion = "0.1"
@@ -11,8 +13,7 @@ lazy val commonSettings = Seq(
   name := projectName,
   version := projectVersion,
   organization := projectOrganization,
-  scalaVersion := projectScalaVersion,
-  licenses := Seq("MIT" -> url("http://opensource.org/licenses/MIT"))
+  scalaVersion := projectScalaVersion
 )
 
 
@@ -24,28 +25,20 @@ lazy val hadoopDependencies = Seq(
 )
 
 lazy val sparkDependencies = Seq(
-  "org.apache.spark" %% "spark-sql" % sparkVersion,
-  "org.apache.spark" %% "spark-mllib" % sparkVersion,
-//  "org.apache.spark" %% "spark-streaming" % sparkVersion,
+  "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
+  "org.apache.spark" %% "spark-mllib" % sparkVersion% "provided",
   "org.apache.spark" %% "spark-hive" % sparkVersion,
-//  "org.apache.spark" %% "spark-graphx" % sparkVersion,
-  "org.apache.spark" %% "spark-core" % sparkVersion
+  "org.apache.spark" %% "spark-core" % sparkVersion% "provided",
 )
 
 
 lazy val dependenciesSettings = Seq(
   resolvers ++= Seq(
-//    "Atlassian Releases" at "https://maven.atlassian.com/public/",
-//    "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases",
-//    Resolver.sonatypeRepo("snapshots"),
     Classpaths.typesafeReleases,
     Classpaths.sbtPluginReleases
   ),
   libraryDependencies ++= Seq(
-   "ch.qos.logback" % "logback-classic" % "1.1.2", // logger, can be ignored in play framwork
-//    "com.databricks" %% "spark-csv" % "1.5.0",
-//    "com.github.fommil.netlib" % "all" % "1.1.2",
-//    "org.scalatest" %% "scalatest" % "2.2.5" % Test
+   "ch.qos.logback" % "logback-classic" % "1.1.2",
   ) ++
     hadoopDependencies ++
     sparkDependencies,
@@ -63,14 +56,40 @@ lazy val dependenciesSettings = Seq(
 //    "com.google.guava" % "guava" % "11.0.2",
 //    "commons-codec" % "commons-codec" % "1.10"
   ),
-  excludeDependencies ++= Seq(
-    ExclusionRule(organization = "org.slf4j", name = "slf4j-log4j12") // ignore default logger, use logback instead
-
-  )
+  
 )
 
-
-
+lazy val assemblySettings = Seq(
+  assemblyJarName in assembly := s"$projectName-$projectVersion-$projectScalaVersion.jar",
+  assemblyMergeStrategy in assembly := {
+    case PathList("javax", "servlet", xs@_*) => MergeStrategy.last
+    case PathList("javax", "activation", xs@_*) => MergeStrategy.last
+    case PathList("org", "apache", xs@_*) => MergeStrategy.last
+    case PathList("com", "google", xs@_*) => MergeStrategy.last
+    case PathList("com", "esotericsoftware", xs@_*) => MergeStrategy.last
+    case PathList("com", "codahale", xs@_*) => MergeStrategy.last
+    case PathList("com", "yammer", xs@_*) => MergeStrategy.last
+    case "about.html" => MergeStrategy.rename
+    case "META-INF/ECLIPSEF.RSA" => MergeStrategy.discard
+    case "META-INF/mailcap" => MergeStrategy.last
+    case "META-INF/mimetypes.default" => MergeStrategy.last
+    case "META-INF/MANIFEST.MF" => MergeStrategy.discard
+    case "plugin.properties" => MergeStrategy.concat
+    case "log4j.properties" => MergeStrategy.concat
+    case x =>
+      // p1
+      //val oldStrategy = (assemblyMergeStrategy in assembly).value
+      //oldStrategy(x)
+      // p2
+      // ignore
+      if (x.startsWith("META-INF/") &&
+        (x.endsWith(".DSA") || x.endsWith(".RSA") || x.endsWith(".SF"))) {
+        MergeStrategy.discard
+      } else {
+        MergeStrategy.last
+      }
+  }
+)
 
 
 
@@ -82,8 +101,12 @@ lazy val launchSettings = Seq(
 lazy val root = Project(id = projectName, base = file("."))
   .settings(commonSettings: _*)
   .settings(dependenciesSettings: _*)
+  .settings(assemblySettings: _*)
   .settings(launchSettings: _*)
 
 fork := true
 
 parallelExecution in Test := false
+
+
+

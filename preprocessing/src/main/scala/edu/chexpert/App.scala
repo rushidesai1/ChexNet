@@ -8,7 +8,6 @@ import java.io.{ByteArrayOutputStream, File}
 
 import edu.chexpert.helper.SparkHelper
 import javax.imageio.ImageIO
-import org.apache.spark.mllib.linalg.Vectors
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.Row
 
@@ -42,12 +41,6 @@ case class ImageText(id:String,bytes:String)
 
 object App {
 
-  def asVector(img:BufferedImage)={
-    var arr:Array[Byte]=img.getRaster.getDataBuffer.asInstanceOf[DataBufferByte].getData
-
-    val testDouble = arr.map(x=>x.toDouble).to[scala.Vector].toArray
-    Vectors.dense(testDouble)
-  }
 
   def dropPrefix(s:String,pre:String):String={
     val trimmed=s.substring(s.indexOf(pre))

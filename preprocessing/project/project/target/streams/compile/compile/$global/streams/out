@@ -1,0 +1,10 @@
+[0m[[0m[31merror[0m] [0m[0m/home/tito/chest_preprocessing/preprocessing/project/project/build.scala:3:24: not found: type Build[0m
+[0m[[0m[31merror[0m] [0m[0mobject Plugins extends Build {[0m
+[0m[[0m[31merror[0m] [0m[0m                       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/tito/chest_preprocessing/preprocessing/project/project/build.scala:5:8: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : sbt.URI[0m
+[0m[[0m[31merror[0m] [0m[0m    (which expands to)  java.net.URI[0m
+[0m[[0m[31merror[0m] [0m[0m required: sbt.ClasspathDep[sbt.ProjectReference][0m
+[0m[[0m[31merror[0m] [0m[0m    uri("git://github.com/sbt/sbt-assembly.git#0.9.1")[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m

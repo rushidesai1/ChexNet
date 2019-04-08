@@ -2,46 +2,105 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c88bbb8-1dbc-4e3f-bbcb-1ea96d8ed5b9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_google_code_findbugs_jsr305_3_0_2_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/chest_preprocessing-build.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/chest_preprocessing-build.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/chest_preprocessing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/chest_preprocessing.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sbt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sbt.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/._SUCCESS.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/.part-00000-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/.part-00001-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/.part-00002-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/.part-00003-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/.part-00004-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/.part-00005-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/.part-00006-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/.part-00007-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/.part-00008-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/.part-00009-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/.part-00010-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/.part-00011-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/.part-00012-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/.part-00013-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/.part-00014-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/.part-00015-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/_SUCCESS" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/part-00000-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/part-00001-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/part-00002-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/part-00003-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/part-00004-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/part-00005-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/part-00006-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/part-00007-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/part-00008-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/part-00009-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/part-00010-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/part-00011-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/part-00012-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/part-00013-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/part-00014-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/images/part-00015-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/labels/._SUCCESS.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/labels/.part-00000-aeab59af-47f4-42f5-a7d0-682894c80317-c000.csv.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/labels/_SUCCESS" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/labels/part-00000-aeab59af-47f4-42f5-a7d0-682894c80317-c000.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$07242757bf9325a8aeb1$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$07242757bf9325a8aeb1.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$07242757bf9325a8aeb1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$1e771d7edefd9c2d0b24$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$1e771d7edefd9c2d0b24.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$1e771d7edefd9c2d0b24.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$7499f5e6b9d5c90cf62c$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$7499f5e6b9d5c90cf62c.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$7499f5e6b9d5c90cf62c.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$fc6a2ceea6420cf67b76$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$fc6a2ceea6420cf67b76.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$fc6a2ceea6420cf67b76.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/default/preprocessing-build/scala_2.12/sbt_1.0/0.1.0-SNAPSHOT/resolved.xml.properties" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/default/preprocessing-build/scala_2.12/sbt_1.0/0.1.0-SNAPSHOT/resolved.xml.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/default/preprocessing-build/scala_2.12/sbt_1.0/0.1.0-SNAPSHOT/resolved.xml.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/default/preprocessing-build/scala_2.12/sbt_1.0/0.1.0-SNAPSHOT/resolved.xml.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-compile-internal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-compile-internal.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-compile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-compile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-optional.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-optional.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-provided.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-provided.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-runtime-internal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-runtime-internal.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-runtime.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-runtime.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-scala-tool.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-scala-tool.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-test-internal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-test-internal.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-preprocessing-build-test.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/input_dsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/input_dsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/output_dsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/output_dsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/$global/ivyConfiguration/$global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/$global/ivyConfiguration/$global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.12/output" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.12/output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/compileIncremental/$global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/compile/compileIncremental/$global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/copyResources/$global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/compile/copyResources/$global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/dependencyClasspath/$global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/compile/dependencyClasspath/$global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/externalDependencyClasspath/$global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/compile/externalDependencyClasspath/$global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/managedClasspath/$global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/compile/managedClasspath/$global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/dependencyClasspath/$global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/runtime/dependencyClasspath/$global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/externalDependencyClasspath/$global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/runtime/externalDependencyClasspath/$global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/fullClasspath/$global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/runtime/fullClasspath/$global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/managedClasspath/$global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/runtime/managedClasspath/$global/streams/export" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/edu/chexpert/App.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/edu/chexpert/App.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/App$$typecreator4$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/App$$typecreator4$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/App$$typecreator9$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/App$$typecreator9$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/App$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/App$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/ChexImage$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/ChexImage$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/ChexImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/ChexImage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/ImageRow$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/ImageRow$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/ImageRow.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/ImageRow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/ImageText$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/ImageText$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/ImageText.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/ImageText.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/Label$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/Label$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/Label.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/com/edu/chexpert/Label.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/edu.gatech/chest_preprocessing$sources/0.1/resolved.xml.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/edu.gatech/chest_preprocessing$sources/0.1/resolved.xml.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/edu.gatech/chest_preprocessing$sources/0.1/resolved.xml.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/edu.gatech/chest_preprocessing$sources/0.1/resolved.xml.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/edu.gatech/chest_preprocessing_2.12/0.1/resolved.xml.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/edu.gatech/chest_preprocessing_2.12/0.1/resolved.xml.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/edu.gatech/chest_preprocessing_2.12/0.1/resolved.xml.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/edu.gatech/chest_preprocessing_2.12/0.1/resolved.xml.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-compile-internal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-compile-internal.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-compile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-compile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-optional.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-optional.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-provided.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-provided.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-runtime-internal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-runtime-internal.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-runtime.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-runtime.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-scala-tool.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-scala-tool.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-test-internal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-test-internal.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing$sources-test.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-compile-internal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-compile-internal.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-compile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-compile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-optional.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-optional.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-provided.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-provided.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-runtime-internal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-runtime-internal.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-runtime.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-runtime.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-scala-tool.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-scala-tool.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-test-internal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-test-internal.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/edu.gatech-chest_preprocessing_2.12-test.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/input_dsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/input_dsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/output_dsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/output_dsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/update_cache_2.12/output" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/update_cache_2.12/output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/$global/updateClassifiers/$global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/$global/updateClassifiers/$global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/compile/externalDependencyClasspath/$global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/externalDependencyClasspath/$global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/compile/managedClasspath/$global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/managedClasspath/$global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/runtime/externalDependencyClasspath/$global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/runtime/externalDependencyClasspath/$global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/runtime/managedClasspath/$global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/runtime/managedClasspath/$global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/test/externalDependencyClasspath/$global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/test/externalDependencyClasspath/$global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/test/managedClasspath/$global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/test/managedClasspath/$global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view1_frontal.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view2_lateral.jpg" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/project/project/target/" />
@@ -57,13 +116,52 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="SBT">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="chest_preprocessing" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="chest_preprocessing" type="f1a62948:ProjectNode" />
+                <item name="chest_preprocessing" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="chest_preprocessing" type="f1a62948:ProjectNode" />
+                <item name="chest_preprocessing" type="2d1252cf:ModuleNode" />
+                <item name="sbt tasks" type="d9357504:SbtViewContributor$SbtTasksGroupNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="chest_preprocessing" type="f1a62948:ProjectNode" />
+                <item name="chest_preprocessing-build" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="chest_preprocessing" type="f1a62948:ProjectNode" />
+                <item name="chest_preprocessing-build" type="2d1252cf:ModuleNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/edu/chexpert/App.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="3857">
+              <caret line="142" selection-start-line="142" selection-end-line="142" />
               <folding>
                 <element signature="e#26#56#0" expanded="true" />
               </folding>
@@ -71,7 +169,79 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/labels/train.csv">
+          <provider selected="true" editor-type-id="LargeFileEditor">
+            <state relative-caret-position="29">
+              <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/output/images/jpg/0.jpg">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/output/images/txt/part-00000-f5ecfa03-237d-4794-b2c3-9eff39a0e291-c000.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="348">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/build.sbt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1769">
+              <caret line="61" column="32" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
+              <folding>
+                <element signature="e#0#72#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project/assembly.sbt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="56" selection-start-column="56" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project/build.properties">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/output/images/txt/part-00013-f5ecfa03-237d-4794-b2c3-9eff39a0e291-c000.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="38" selection-start-column="4" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/output/labels/part-00000-72f24de6-e400-4a30-ac25-b475c6a49afc-c000.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4379">
+              <caret line="151" column="11" selection-start-line="151" selection-start-column="11" selection-end-line="178" selection-end-column="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>test</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -79,7 +249,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/plugin.sbt" />
         <option value="$PROJECT_DIR$/src/main/scala/edu/chexpert/App.scala" />
+        <option value="$PROJECT_DIR$/build.sbt" />
       </list>
     </option>
   </component>
@@ -101,48 +273,57 @@
         <subPane>
           <expand>
             <path>
-              <item name="preprocessing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chest_preprocessing" type="b2602c69:ProjectViewProjectNode" />
               <item name="preprocessing" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="preprocessing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chest_preprocessing" type="b2602c69:ProjectViewProjectNode" />
               <item name="preprocessing" type="462c0819:PsiDirectoryNode" />
-              <item name="labels" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="preprocessing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chest_preprocessing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="preprocessing" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chest_preprocessing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="preprocessing" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chest_preprocessing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="preprocessing" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chest_preprocessing" type="b2602c69:ProjectViewProjectNode" />
               <item name="preprocessing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="preprocessing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chest_preprocessing" type="b2602c69:ProjectViewProjectNode" />
               <item name="preprocessing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="preprocessing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chest_preprocessing" type="b2602c69:ProjectViewProjectNode" />
               <item name="preprocessing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="scala" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="preprocessing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chest_preprocessing" type="b2602c69:ProjectViewProjectNode" />
               <item name="preprocessing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="scala" type="462c0819:PsiDirectoryNode" />
               <item name="chexpert" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="preprocessing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="preprocessing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="scala" type="462c0819:PsiDirectoryNode" />
-              <item name="chexpert" type="462c0819:PsiDirectoryNode" />
-              <item name="helper" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -151,7 +332,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -212,7 +393,10 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$/build.sbt" value="709833932" />
+        <entry key="$PROJECT_DIR$/build.sbt" value="3615003720" />
+        <entry key="$PROJECT_DIR$/project/assembly.sbt" value="2947818574" />
+        <entry key="$PROJECT_DIR$/project/build.properties" value="3771982881" />
+        <entry key="$PROJECT_DIR$/project/plugins.sbt" value="2535422147" />
       </map>
     </option>
     <option name="projectSyncType">
@@ -235,18 +419,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="3840" height="2160" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="Designer" order="1" />
-      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.27134472" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.5002668" side_tool="true" weight="0.329653" />
       <window_info anchor="bottom" id="Version Control" order="2" />
       <window_info anchor="bottom" id="Build" order="3" sideWeight="0.49973318" weight="0.329653" />
-      <window_info active="true" anchor="bottom" id="Messages" order="4" visible="true" weight="0.329653" />
-      <window_info anchor="bottom" id="sbt-shell-toolwindow" order="5" />
+      <window_info anchor="bottom" id="Messages" order="4" weight="0.329653" />
+      <window_info active="true" anchor="bottom" id="sbt-shell-toolwindow" order="5" visible="true" weight="0.33017877" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" />
       <window_info anchor="bottom" id="Run" order="8" sideWeight="0.49973318" weight="0.329653" />
@@ -254,7 +437,7 @@
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="12" />
-      <window_info anchor="right" id="sbt" order="0" />
+      <window_info anchor="right" id="sbt" order="0" visible="true" weight="0.32977587" />
       <window_info anchor="right" id="Palette&#9;" order="1" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="2" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
@@ -266,13 +449,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="scala-line">
           <url>file://$PROJECT_DIR$/src/main/scala/edu/chexpert/App.scala</url>
-          <line>173</line>
+          <line>166</line>
           <properties />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="scala-line">
           <url>file://$PROJECT_DIR$/src/main/scala/edu/chexpert/App.scala</url>
-          <line>166</line>
+          <line>159</line>
           <properties />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
@@ -329,24 +512,12 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data/foo/part-00002">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/foo/part-00003">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/foo/part-00004">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/foo/part-00005">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/foo/part-00006">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/foo/part-00007">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/data/foo/part-00002" />
+    <entry file="file://$PROJECT_DIR$/data/foo/part-00003" />
+    <entry file="file://$PROJECT_DIR$/data/foo/part-00004" />
+    <entry file="file://$PROJECT_DIR$/data/foo/part-00005" />
+    <entry file="file://$PROJECT_DIR$/data/foo/part-00006" />
+    <entry file="file://$PROJECT_DIR$/data/foo/part-00007" />
     <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-mllib_2.12/srcs/spark-mllib_2.12-2.4.0-sources.jar!/org/apache/spark/mllib/linalg/Vectors.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="406">
@@ -354,12 +525,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/foo/part-00000">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/foo/part-00001">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/data/foo/part-00000" />
+    <entry file="file://$PROJECT_DIR$/data/foo/part-00001" />
     <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-mllib_2.12/srcs/spark-mllib_2.12-2.4.0-sources.jar!/org/apache/spark/ml/feature/StandardScaler.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="406">
@@ -370,13 +537,6 @@
     <entry file="file://$PROJECT_DIR$/labels/valid.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/labels/train.csv">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state>
-          <caret column="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-sql_2.12/srcs/spark-sql_2.12-2.4.0-sources.jar!/org/apache/spark/sql/DataFrameReader.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="14">
@@ -384,70 +544,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/part-00001-2cd61427-45b1-44b2-8c02-7c046222900c-c000.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/part-00003-2cd61427-45b1-44b2-8c02-7c046222900c-c000.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/part-00006-2cd61427-45b1-44b2-8c02-7c046222900c-c000.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/part-00008-2cd61427-45b1-44b2-8c02-7c046222900c-c000.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/part-00013-2cd61427-45b1-44b2-8c02-7c046222900c-c000.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/part-00014-2cd61427-45b1-44b2-8c02-7c046222900c-c000.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/part-00015-2cd61427-45b1-44b2-8c02-7c046222900c-c000.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/part-00000-2cd61427-45b1-44b2-8c02-7c046222900c-c000.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/part-00000-440532a6-1fe8-4687-8004-1f309179d388-c000.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/part-00001-440532a6-1fe8-4687-8004-1f309179d388-c000.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/part-00003-440532a6-1fe8-4687-8004-1f309179d388-c000.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/part-00015-440532a6-1fe8-4687-8004-1f309179d388-c000.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/output/labels/part-00000-fa2b9554-0747-4aea-b014-d1a3998f291e-c000.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/output/labels/part-00000-9c0a29d0-c41c-44c7-980c-926054df1bc1-c000.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/output/images/part-00000">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/output/images/part-00000-f48ad0c0-7f6b-4132-8b39-f44d0b51f843-c000.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/output/labels/part-00000-aeab59af-47f4-42f5-a7d0-682894c80317-c000.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/output/images/part-00000-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv">
+    <entry file="file://$PROJECT_DIR$/data/part-00001-2cd61427-45b1-44b2-8c02-7c046222900c-c000.csv" />
+    <entry file="file://$PROJECT_DIR$/data/part-00003-2cd61427-45b1-44b2-8c02-7c046222900c-c000.csv" />
+    <entry file="file://$PROJECT_DIR$/data/part-00006-2cd61427-45b1-44b2-8c02-7c046222900c-c000.csv" />
+    <entry file="file://$PROJECT_DIR$/data/part-00008-2cd61427-45b1-44b2-8c02-7c046222900c-c000.csv" />
+    <entry file="file://$PROJECT_DIR$/data/part-00013-2cd61427-45b1-44b2-8c02-7c046222900c-c000.csv" />
+    <entry file="file://$PROJECT_DIR$/data/part-00014-2cd61427-45b1-44b2-8c02-7c046222900c-c000.csv" />
+    <entry file="file://$PROJECT_DIR$/data/part-00015-2cd61427-45b1-44b2-8c02-7c046222900c-c000.csv" />
+    <entry file="file://$PROJECT_DIR$/data/part-00000-2cd61427-45b1-44b2-8c02-7c046222900c-c000.csv" />
+    <entry file="file://$PROJECT_DIR$/data/part-00000-440532a6-1fe8-4687-8004-1f309179d388-c000.csv" />
+    <entry file="file://$PROJECT_DIR$/data/part-00001-440532a6-1fe8-4687-8004-1f309179d388-c000.csv" />
+    <entry file="file://$PROJECT_DIR$/data/part-00003-440532a6-1fe8-4687-8004-1f309179d388-c000.csv" />
+    <entry file="file://$PROJECT_DIR$/data/part-00015-440532a6-1fe8-4687-8004-1f309179d388-c000.csv" />
+    <entry file="file://$PROJECT_DIR$/output/labels/part-00000-fa2b9554-0747-4aea-b014-d1a3998f291e-c000.csv" />
+    <entry file="file://$PROJECT_DIR$/output/labels/part-00000-9c0a29d0-c41c-44c7-980c-926054df1bc1-c000.csv" />
+    <entry file="file://$PROJECT_DIR$/output/images/part-00000" />
+    <entry file="file://$PROJECT_DIR$/output/images/part-00000-f48ad0c0-7f6b-4132-8b39-f44d0b51f843-c000.csv" />
+    <entry file="file://$PROJECT_DIR$/output/labels/part-00000-aeab59af-47f4-42f5-a7d0-682894c80317-c000.csv" />
+    <entry file="file://$PROJECT_DIR$/output/images/part-00000-36198eb5-4ef9-46d5-a477-8a6d3622ff87-c000.csv" />
+    <entry file="file://$PROJECT_DIR$/plugin.sbt" />
+    <entry file="file://$PROJECT_DIR$/src/main/scala/edu/chexpert/App.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="1" column="22195" selection-start-line="1" selection-start-column="22195" selection-end-line="1" selection-end-column="22195" />
+        <state relative-caret-position="3857">
+          <caret line="142" selection-start-line="142" selection-end-line="142" />
+          <folding>
+            <element signature="e#26#56#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/edu/chexpert/App.scala">
+    <entry file="file://$PROJECT_DIR$/labels/train.csv">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="29">
+          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output/images/jpg/0.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output/images/txt/part-00000-f5ecfa03-237d-4794-b2c3-9eff39a0e291-c000.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="348">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/assembly.sbt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="56" selection-start-column="56" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/build.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output/images/txt/part-00013-f5ecfa03-237d-4794-b2c3-9eff39a0e291-c000.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="38" selection-start-column="4" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output/labels/part-00000-72f24de6-e400-4a30-ac25-b475c6a49afc-c000.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4379">
+          <caret line="151" column="11" selection-start-line="151" selection-start-column="11" selection-end-line="178" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.sbt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1769">
+          <caret line="61" column="32" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
           <folding>
-            <element signature="e#26#56#0" expanded="true" />
+            <element signature="e#0#72#0" expanded="true" />
           </folding>
         </state>
       </provider>
