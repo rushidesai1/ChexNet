@@ -1,2 +1,2 @@
 **/.idea/*
-preprocessing/project/target/*
+preprocessing/project/target/**
