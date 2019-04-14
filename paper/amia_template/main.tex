@@ -10,19 +10,19 @@
 
 \title{Chest X-Ray (CXR) Disease Diagnosis with DenseNet}
 
-\author{Doug Beatty$^{1}$, Filip Juristovski$^{1}$, Rushi Desai$^{1}$, Mohamed Abdelrazik$^{1}$}
+\author{Doug Beatty, Filip Juristovski, Rushi Desai, Mohamed Abdelrazik}
 
 \institutes{
-    $^1$Georgia Institute of Technology, Atlanta, Georgia\\
+    Georgia Institute of Technology, Atlanta, Georgia\\
 }
 
 \maketitle
 
 \noindent{\bf Abstract}
 
-\textit{ Chest X-ray\cite{ref1} is a crucial medical imaging technology used by several doctors to diagnose patients. Training a human radiologist is a lengthy and costly process. Deep learning techniques combined with availability of larger data sets increases the feasibility of building automated models with  performance close to human radiologists. }
+\textit{ Chest X-ray\cite{ref1} is a crucial medical imaging technology used by several doctors to diagnose patients. Training a human radiologist is a lengthy and costly process. Deep learning techniques combined with availability of larger data sets increases the feasibility of building automated models with  performance close to human radiologists.}
 
-\textit{We present a scalable deep learning model trained on the CheXpert \cite{ref2} data set of X-ray images to detect and correctly classify 14 different diseases}
+\textit{We present a scalable deep learning model trained on the Chestx-ray14 \cite{ref7} data set of X-ray images to detect and correctly classify presence of pneumonia. We plan to expand the model to classify 14 different diseases.}
 
 \section*{Introduction}
 A chest radiograph\cite{ref1}, or a chest X-ray (CXR) is one of the oldest and most common forms of medical imaging. A human radiologist requires significant training time and cost to be able to perform a comprehensive chest X-ray analysis with minimal error. Several types of abnormalities can show up in a chest radiograph that can lead to detection and diagnosis of several kinds of diseases but due to the vast number of different abnormalities and the overlapping reasons that might cause them, there’s a plenty of room for human error.
@@ -36,25 +36,28 @@ The revolution of machine learning and deep learning techniques combined with th
 \begin{enumerate}
 \item Data set acquisition
 \item Image preprocessing - Apache Spark
-\item Training Dense 121 deep learning model - Keras
+\item Training Densenet 121 deep learning model - Keras
 \item Model validation and fine tuning
 \item Model evaluation
 \end{enumerate}
 
-\section*{Data acquisition }
-Dataset was acquired upon registration and acceptance of the Stanford University School of Medicine CheXpert Dataset Research Use Agreement terms and conditions.\cite{ref2}
+\section*{Data acquisition}
+We acquired two different datasets of chest radiographs. The first is chestxray14 from the NIH and all results from this paper are using this dataset. The second is CheXpert which we plan to use for our final results.
+
+The CheXpert dataset was acquired upon registration and acceptance of the Stanford University School of Medicine CheXpert Dataset Research Use Agreement terms and conditions.\cite{ref2}
 
 \section*{Dataset format}
+The full chestxray14 dataset consists of 112,120 chest radiographs of 30,805 patients. We are using this dataset for our initial training and results.
 
-Dataset consists of 224,316 chest radiographs of 65,240 patients. Each imaging study can pertain to one or more images, but most often are associated with two images: a frontal view and a lateral view. Images are provided with 14 labels derived from a natural language processing tool applied to the corresponding free-text radiology reports.
+CheXpert consists of 224,316 chest radiographs of 65,240 patients. Each imaging study can pertain to one or more images, but most often are associated with two images: a frontal view and a lateral view. Images are provided with 14 labels derived from a natural language processing tool applied to the corresponding free-text radiology reports.
 
-Image files are provided following a specific directory structure :
+Image files are provided following a specific directory structure:
 
 /[Data set type]/[patient ID]/[Study ID]/[View ID]\_[view type].jpg
 
 where data set type can be train (for training set) or valid (for validation set), and view type can be frontal or lateral.
 
-e.g. an input sample of a frontal study for a patient in the training set will be available at :
+e.g. an input sample of a frontal study for a patient in the training set will be available at:
 
 CheXpert/train/patient00001/study1/view1\_frontal.jpg
 
@@ -65,14 +68,14 @@ A CSV file is provided for each data set type (valid or train). Each image recor
 
 \section*{Dataset Pre-Processing}
 
-CheXpert\cite{ref2} images are provided in high resolution which is not suitable for use as input to the model. Using a high resolution image significantly increases the number of input feature vectors which would require an increase in the model complexity and training time. Data set images where prepossessed before training using Apache Spark which is a scalable Big data processing technology. Several down-sampling techniques were used to reduce image size.
+CheXpert\cite{ref2} images are provided in high resolution which is not suitable for use as input to the model. Using a high resolution image significantly increases the number of input feature vectors which would require an increase in the model complexity and training time. Data set images where preprocessed before training using Apache Spark which is a scalable Big data processing technology. Several down-sampling techniques were used to reduce image size.
 
-A neural network (e.g. CNN) is said to have an in-variance property when it is capable to robustly classify objects even if its placed in different orientations.To enrich the input data set and increase the number of available training samples, we performed data augmentation by generating several images with different orientations from a subset of input images.
+A convolution neural network (CNN) is said to have an in-variance property when it is capable to robustly classify objects even if its placed in different orientations. To enrich the input data set and increase the number of available training samples, we performed data augmentation by generating several images with different orientations from a subset of input images.
 
 Each input image is down sampled by resizing to 224*224 pixels. An input image generates one or more augmented versions of itself (e.g. by horizontal flipping). Each output image is assigned an ID of type Long, and inherits all the labels from the original input image.
 
 Pre-processed images are saved to HDFS, which is a highly distributed and scalable Big data storage system. Due to HDFS implementation and API limitations, storing several tiny image files is not an efficient operation.
-We decided to change the output format of be textual. Each image can be represented with the unsigned values of its byte stream (a vector of length 224*224). Each Spark RDD Partition will save its images as a space separated file with this format:
+We decided to change the output format to be textual. Each image can be represented with the unsigned values of its byte stream (a vector of length 224*224). Each Spark RDD Partition will save its images as a space separated file with this format:
 [imageID] [bytes values]
 
 Where Image ID is the newly assigned ID, and the bytes are space separated vector of row based pixel values.
@@ -95,7 +98,7 @@ To guide our training and see if we are on track, we will use loss curves and mo
 \label{fig1}
 \end{figure}
 
-The loss curve indicates that we might have high variance issue. For this loss curve, we took a pre-trained Densenet with Imagenet weights and added 3 additional full connected layers. We then froze all layers and trained only the additional layers. Once the additional layers were trained, we then unfroze total of 9 layers including the new added ones and went through training again.
+The loss curve indicates that we might have high variance issue. For this loss curve, we took a pre-trained DenseNet with ImageNet weights and added 3 additional full connected layers. We then froze all layers and trained only the additional layers. Once the additional layers were trained, we then unfroze total of 9 layers including the new added ones and went through training again.
 
 The loss curve hints us trying approaches like getting more data, training deeper into architecture by unfreezing more layers etc.
 
@@ -110,21 +113,15 @@ Figure 2 shows the accuracy curve. At this point we aren't getting a monotonic t
 
 
 \section*{Discussion}
-Dense Convolution Networks (DenseNets) are a form of residual networks. Residual networks allow us to train much deeper networks than conventional CNN architecture since they handle vanishing/exploding gradient problem much more effectively. Theoretically, it is expected that performance of models should increase as architecture grows deeper, and we should get monotonically decreasing performance. But in reality we don't see that since as layers get deeper, the optimizer find its more and more difficult to train the network due to Vanishing/Exploding gradient problem. Resnet allow us to match the expected theoretical issue. Figure 2 and 3 shows depth vs performance characteristic.
+Dense Convolution Networks (DenseNets) are a form of residual networks. Residual networks allow us to train much deeper networks than conventional CNN architecture since they handle vanishing/exploding gradient problem much more effectively. Theoretically, it is expected that performance of models should increase as architecture grows deeper, and we should get monotonically decreasing performance. But in reality we don't see that since as layers get deeper, the optimizer find its more and more difficult to train the network due to Vanishing/Exploding gradient problem. Resnet allow us to match the expected theoretical issue. Figure 2 shows depth vs performance characteristic.
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=1]{amia_template/pics/CNN-Performance.png}
+\includegraphics[scale=1]{amia_template/pics/Resnet-Plain-Performance.png}
 \caption{Model Accuracy}
-\label{fig2}
+\label{fig3}
 \end{figure}
 
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=1]{amia_template/pics/Resnet-Performance.png}
-\caption{Model Accuracy}
-\label{fig2}
-\end{figure}
 
 ResNets however have a lot of parameters compared to conventional CNN networks. DenseNet retain all features of ResNet and go further by eliminating pitfalls of ResNet. DenseNets have much less parameters to train compared to ResNets (typically up to 3x less parameters)
 The base model is DenseNet121 using pretrained weights from ImageNet. We load a network that doesn't include the classification layers at the top, this is ideal for feature extraction.
