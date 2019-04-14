@@ -93,7 +93,7 @@ To guide our training and see if we are on track, we will use loss curves and mo
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=1]{amia_template/pics/model_loss_3.png}
+\includegraphics[scale=0.5]{amia_template/pics/model_loss_3.png}
 \caption{Model loss}
 \label{fig1}
 \end{figure}
@@ -106,7 +106,7 @@ Figure 2 shows the accuracy curve. At this point we aren't getting a monotonic t
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=1]{amia_template/pics/model_accuracy_3.png}
+\includegraphics[scale=0.5]{amia_template/pics/model_accuracy_3.png}
 \caption{Model Accuracy}
 \label{fig2}
 \end{figure}
@@ -117,7 +117,7 @@ Dense Convolution Networks (DenseNets) are a form of residual networks. Residual
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=1]{amia_template/pics/Resnet-Plain-Performance.png}
+\includegraphics[scale=0.5]{amia_template/pics/Resnet-Plain-Performance.png}
 \caption{Model Accuracy}
 \label{fig3}
 \end{figure}
@@ -129,7 +129,7 @@ The base model is DenseNet121 using pretrained weights from ImageNet. We load a 
 Currently we are only focusing on improving performance on Pneumonia and later we will expand on other diseases. This is to reduce complexity and getting a working model. Adding other diseases will mainly comprise of changing the classification layer and retraining on data-set with all labels. Currently we are using only 33,000  images for training. Using sampled dataset allows us to iterate faster and focus on removing bugs etc in our model and training code.
 \section*{Conclusion}
 
-Although the performance of the model is below par right now but we feel we are on right track looking at our loss and accuracy plots. Also AUC is satisfactory at this point. Next we will expand the dataset and tune the model to get better performance and creating heatmaps for better visualization.
+Although the performance of the model is below par right now but we feel we are on right track looking at our loss and accuracy plots. Also AUC is not satisfactory at this point [insert AUC score here]. Next we will expand the dataset and tune the model to get better performance and creating heatmaps for better visualization.
 
 
 \makeatletter
