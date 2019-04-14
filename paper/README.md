@@ -12,6 +12,13 @@
 ## Project Draft assignment
 https://gatech.instructure.com/courses/31063/assignments/99448
 
+Project draft:
+* Up to 5-page write-up + 1 page of references
+* Guide
+    * Make sure your write-up cover all aspects described in
+project execution.
+    * Conduct literature search and cite at least 8 papers or more that are relevant to the project.
+
 ## Project Draft details
 https://piazza.com/class/jpbpri85qz97a?cid=1719
 
@@ -28,3 +35,12 @@ A few additional comments are:
 * Here the 'results', especially for the draft, can be any results. For example, results by yet simpler model which can be used as one of baseline in your final paper, results from intermediate steps prior to your ultimate target task, results with a tiny subset of your dataset generated for a verification of your pipeline, etc., all those followed by your own analysis can be used.
 * Grading of both your draft and final paper is not based on some 'numbers' from metrics. Instead, it will be on how comprehensive your project/paper is; how well the problem and the task are defined; whether your approach including feature extraction/processing and modeling are reasonable and convincing; how well you described these things, etc.
 * Also, your proposal, draft, and final paper are independent to each other, which means we will not check whether you keep everything what you said you want to do, so you can switch/deviate from your proposal and even from draft anytime if you want to, so please plan early and make sure you are on the right track.
+
+## Final Draft assignment
+https://gatech.instructure.com/courses/31063/assignments/
+
+Final report:
+
+* up to 7-page write-up + 1 page reference (the same template as project draft), see sample papers for reference
+* 5-min presentation (Youtube (include link in paper) or audio attached slides) + slides
+* software implementation and documentation
