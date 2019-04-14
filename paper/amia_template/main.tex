@@ -30,7 +30,7 @@
 
 \noindent{\bf Abstract}
 
-\textit{ Chest X-ray imaging \cite{ref1} is a crucial medical technology used by physicians to diagnose disease and monitor treatment outcomes. Training a human radiologist is a lengthy and costly process. Deep learning techniques combined with availability of larger data sets increases the feasibility of building automated models with performance approaching human radiologists.}
+\textit{Chest X-ray imaging \cite{ref1} is a crucial medical technology used by physicians to diagnose disease and monitor treatment outcomes. Training a human radiologist is a lengthy and costly process. Deep learning techniques combined with availability of larger data sets increases the feasibility of building automated models with performance approaching human radiologists.}
 
 \textit{We present a scalable deep learning model trained on the ChestXray14 \cite{ref7} data set of X-ray images to detect and correctly classify presence of pneumonia. We plan to expand the model to classify 14 different diseases.}
 
@@ -66,7 +66,7 @@ Image files are provided following a specific directory structure:
 \definecolor{light-gray}{gray}{0.95}
 \newcommand{\code}[1]{\colorbox{light-gray}{\texttt{#1}}}
 
-\code{/[Data set type]/[patient ID]/[Study ID]/[View ID]\_[view type].jpg}
+\code{/[Data set type]/[Patient ID]/[Study ID]/[View ID]\_[view type].jpg}
 
 where data set type can be train (for training set) or valid (for validation set), and view type can be frontal or lateral.
 
@@ -90,11 +90,11 @@ Each input image is down sampled by resizing to 224*224 pixels. An input image g
 Pre-processed images are saved to HDFS, which is a highly distributed and scalable Big data storage system. Due to HDFS implementation and API limitations, storing several tiny image files is not an efficient operation.
 We decided to change the output format to be textual. Each image can be represented with the unsigned values of its byte stream (a vector of length 224*224). Each Spark RDD Partition will save its images as a space separated file with this format:
 
-\code{[imageID] [bytes values]}
+\code{[Image ID] [bytes values]}
 
 where Image ID is the newly assigned ID, and the bytes are space separated vector of row based pixel values.
 
-A corresponding CSV file for labels is generated which starts with the Image Id along with all the inherited labels from the original image.
+A corresponding CSV file for labels is generated which starts with the Image ID along with all the inherited labels from the original image.
 
 This new output storage format resulted in significant decrease of the pre-processing job run time, and was suitable as a direct input to the model.
 
@@ -112,11 +112,11 @@ To guide our training and see if we are on track, we will use loss curves and mo
 \label{fig1}
 \end{figure}
 
-The loss curve indicates that we might have an issue with high variance. For this loss curve, we took a pre-trained DenseNet with ImageNet weights and added 3 additional full connected layers. We then froze all layers and trained only the additional layers. Once the additional layers were trained, we then unfroze total of 9 layers including the new added ones and went through training again.
+The loss curve indicates that we might have an issue with high variance. For this loss curve, we took a pre-trained DenseNet with ImageNet weights and added an additional 3 fully connected layers. We then froze all layers and trained only the additional layers. Once the additional layers were trained, we then unfroze a total of 9 layers including the newly added ones and went through training again.
 
-The loss curve hints us trying approaches like getting more data, training deeper into architecture by unfreezing more layers etc.
+The loss curve suggests trying approaches like procuring more data, training deeper into architecture by unfreezing more layers etc.
 
-Figure \ref{fig2} shows the accuracy curve. At this point we aren't getting a monotonic trend in accuracy curve so we will continue to investigate methods to improve the accuracy. We also see that like model loss, accuracy also is performing badly in test as compared to train. So we will focus on getting both train loss lower and accuracy higher and bring train and test metrics as close as possible.
+Figure \ref{fig2} shows the accuracy curve. At this point we aren't getting a monotonic trend in our accuracy curve so we will continue to investigate methods to improve the accuracy. We also see that like model loss, accuracy also is performing poorly on the test set as compared to the training set. So we will focus on getting both training loss lower and accuracy higher and bring train and test metrics as close as possible.
 
 \begin{figure}[h!]
 \centering
@@ -127,7 +127,7 @@ Figure \ref{fig2} shows the accuracy curve. At this point we aren't getting a mo
 
 
 \section*{Discussion}
-Dense Convolution Networks (DenseNets) are a form of residual networks. Residual networks allow us to train much deeper networks than conventional CNN architecture since they handle vanishing/exploding gradient problem much more effectively. Theoretically, it is expected that performance of models should increase as architecture grows deeper, and we should get monotonically decreasing performance. But in reality we don't see that since as layers get deeper, the optimizer find its more and more difficult to train the network due to Vanishing/Exploding gradient problem. ResNet allow us to match the expected theoretical issue. Figure \ref{fig3} shows depth vs performance characteristic.
+Dense Convolution Networks (DenseNets) are a form of residual networks. Residual networks allow us to train much deeper networks than conventional CNN architecture since they handle the vanishing/exploding gradient problem much more effectively. Theoretically, it is expected that performance of models should increase as architecture grows deeper, and we should get monotonically decreasing performance. But in reality we don't see that since as the layers get deeper, the optimizer finds it more and more difficult to train the network due to the vanishing/exploding gradient problem. ResNet allow us to match the expected theoretical issue. Figure \ref{fig3} shows the depth vs performance characteristic.
 
 \begin{figure}[h!]
 \centering
@@ -137,13 +137,12 @@ Dense Convolution Networks (DenseNets) are a form of residual networks. Residual
 \end{figure}
 
 
-ResNets however have a lot of parameters compared to conventional CNN networks. DenseNet retain all features of ResNet and go further by eliminating pitfalls of ResNet. DenseNets have much less parameters to train compared to ResNets (typically up to 3x less parameters)
-The base model is DenseNet121 using pretrained weights from ImageNet. We load a network that doesn't include the classification layers at the top, this is ideal for feature extraction.
+ResNets however have a lot of parameters compared to conventional CNN networks. DenseNet retains all features of ResNet and goes further by eliminating some pitfalls of ResNet. DenseNets have much less parameters to train compared to ResNets (typically up to 3x less parameters). The base model we are using is DenseNet-121 with pretrained weights from ImageNet. For feature extraction purposes, we load a network that doesn't include the classification layers at the top.
 
-Currently we are only focusing on improving performance on Pneumonia and later we will expand on other diseases. This is to reduce complexity and getting a working model. Adding other diseases will mainly comprise of changing the classification layer and retraining on data-set with all labels. Currently we are using only 33,000 images for training. Using sampled dataset allows us to iterate faster and focus on removing bugs etc in our model and training code.
+Currently we are only focusing on improving performance on the pneumonia disease class and later we will expand to other diseases. This is to reduce complexity and to focus on producing a working model. Adding other diseases will mainly comprise of changing the classification layer and retraining on the dataset with all labels included. Currently we are using only 33,000 images for training. Using a sampled dataset allows us to iterate faster and focus on removing bugs etc in our model and training code.
+
 \section*{Conclusion}
-
-Although the performance of the model is below par right now but we feel we are on right track looking at our loss and accuracy plots. Also AUC is not satisfactory at this point [insert AUC score here]. Next we will expand the dataset and tune the model to get better performance and creating class activation maps (CAM) heatmaps for better visualization as seen in Figure \ref{fig:cam_heatmap}.
+Although the performance of the model is below par currently we feel we are on right track looking at our loss and accuracy plots. Also AUC is not satisfactory at this point [insert AUC score here]. Next we will expand the dataset and tune the model to get better performance and creating class activation maps (CAM) heatmaps for better visualization as seen in Figure \ref{fig:cam_heatmap}.
 
 \makeatletter
 
@@ -214,7 +213,7 @@ Gardner RM, Golubjatnikov OK, Laub RM, Jacobson JT, Evans RS. Computer-critiqued
 
 \end{document}
 
-The base model is DenseNet121 using pretrained weights from ImageNet. We load a network that doesn't include the classification layers at the top; this is ideal for feature extraction.
+The base model is DenseNet-121 using pretrained weights from ImageNet. We load a network that doesn't include the classification layers at the top; this is ideal for feature extraction.
 
 We make the model non-trainable since we will only use it for feature extraction; we won't update the weights of the pretrained model during training.
 
