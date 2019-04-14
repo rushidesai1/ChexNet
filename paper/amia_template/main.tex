@@ -71,7 +71,7 @@ A neural network (e.g. CNN) is said to have an in-variance property when it is c
 
 Each input image is down sampled by resizing to 224*224 pixels. An input image generates one or more augmented versions of itself (e.g. by horizontal flipping). Each output image is assigned an ID of type Long, and inherits all the labels from the original input image.
 
-Preprocessed images are saved to HDFS, which is a highly distributed and scalable Big data storage system. Due to HDFS implementation and API limitations, storing several tiny image files is not an efficient operation.
+Pre-processed images are saved to HDFS, which is a highly distributed and scalable Big data storage system. Due to HDFS implementation and API limitations, storing several tiny image files is not an efficient operation.
 We decided to change the output format of be textual. Each image can be represented with the unsigned values of its byte stream (a vector of length 224*224). Each Spark RDD Partition will save its images as a space separated file with this format:
 [imageID] [bytes values]
 
@@ -79,64 +79,61 @@ Where Image ID is the newly assigned ID, and the bytes are space separated vecto
 
 A corresponding CSV file for labels is generated which starts with the Image Id along with all the inherited labels from the original image.
 
-This new output storage format resulted in significant decrease of the preprocessing job run time, and was suitable as a direct input to the model.
+This new output storage format resulted in significant decrease of the pre-processing job run time, and was suitable as a direct input to the model.
 
 
 
-\section*{Metrics}
+\section*{Metrics and Experimental Results}
+We will use AUC to determine performance of our results. We will compare it with the previous best performing results.
 
-This sentence has one reference citation\cite{ref1}.
+To guide our training and see if we are on track, we will use loss curves and model accuracy plots. This will help us diagnose if our model is over-fitting, under-fitting etc. From our initial training, we have the loss curve as shown in Figure 1.
 
-This sentence has two reference citations\cite{ref1,ref2}.
-
-More text of an additional paragraph, with a figure reference (Figure ~\ref{fig1}) and a figure inside a Word text box below.  Figures need to be placed as close to the corresponding text as possible and not extend beyond one page.\\
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=1]{pics/figure1.png}
-\caption{Total allergy alerts, overridden alerts, or drug order cancelled.}
+\includegraphics[scale=1]{amia_template/pics/model_loss_3.png}
+\caption{Model loss}
 \label{fig1}
 \end{figure}
 
-This is additional text added just to show the one-column formatting.  This is additional text added just to show the one-column formatting.  This is additional text added just to show the one-column formatting.  This is additional text added just to show the one-column formatting.  This is additional text added just to show the one-column formatting.  This is additional text added just to show the one-column formatting.  This is additional text added just to show the one-column formatting.
+The loss curve indicates that we might have high variance issue. For this loss curve, we took a pre-trained Densenet with Imagenet weights and added 3 additional full connected layers. We then froze all layers and trained only the additional layers. Once the additional layers were trained, we then unfroze total of 9 layers including the new added ones and went through training again.
 
-This paragraph contains a reference to a table just below (Table 1).  All tables need to be placed as close to the corresponding text as possible, But each individual table should be on one page and not extend to multiple pages unless labeled as ``Continued".
+The loss curve hints us trying approaches like getting more data, training deeper into architecture by unfreezing more layers etc.
 
-\begin{table}[h]
+Figure 2 shows the accuracy curve. At this point we aren't getting a monotonic trend in accuracy curve so we will continue to investigate methods to improve the accuracy. We also see that like model loss, accuracy also is performing badly in test as compared to train. So we will focus on getting both train loss lower and accuracy higher and bring train and test metrics as close as possible.
+
+\begin{figure}[h!]
 \centering
-\caption{Submission type, abstract length, and page length maximum for AMIA submissions.}
-  \begin{tabular}{|l|l|l|}
-  \hline
-    \textbf{Submission Type}    & \textbf{Abstract Length}  & \textbf{Page Length Maximum**} \\ \hline
-    Paper  & 125-150 words  & Ten   \\ \hline
-    Student Paper  & 125-150 words  & Ten \\ \hline
-    Poster  &50-75 words*   & One \\ \hline
-    Podium  Abstract & 50-75 words*  & Two \\ \hline
-    Panel   &150-200 words  & Three \\ \hline
-    System Demonstrations    &150-200 words  & One \\ \hline
-  \end{tabular}
-\end{table}
-*: All podium abstract and poster submissions must have a brief (50-75 words) abstract. The abstract does NOT have to be part of the document, but must be entered on the submission website in the Abstract box in Step 2.
-
-**: \textcolor{red}{If your submission is longer than what is specified below, it will be rejected without review.}
-
-This is another paragraph.
-
-\section*{Experimental Results}
-Experimental results are described here.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla malesuada tempus lacus. Phasellus vestibulum ut dolor ut vestibulum. Sed tincidunt libero nibh. Donec nec accumsan felis. Etiam consectetur metus sit amet pellentesque fermentum. Morbi sagittis velit quis justo faucibus, quis mollis ipsum vestibulum. Phasellus condimentum quam id nisl fringilla fermentum. Curabitur vitae augue ornare, aliquet odio sit amet, faucibus metus. Maecenas finibus eget magna lacinia efficitur.
+\includegraphics[scale=1]{amia_template/pics/model_accuracy_3.png}
+\caption{Model Accuracy}
+\label{fig2}
+\end{figure}
 
 
 \section*{Discussion}
-Discussion is here.
+Dense Convolution Networks (DenseNets) are a form of residual networks. Residual networks allow us to train much deeper networks than conventional CNN architecture since they handle vanishing/exploding gradient problem much more effectively. Theoretically, it is expected that performance of models should increase as architecture grows deeper, and we should get monotonically decreasing performance. But in reality we don't see that since as layers get deeper, the optimizer find its more and more difficult to train the network due to Vanishing/Exploding gradient problem. Resnet allow us to match the expected theoretical issue. Figure 2 and 3 shows depth vs performance characteristic.
 
-Vivamus bibendum pharetra varius. Vivamus viverra nisl sed ex fringilla, in rutrum mauris dignissim. Pellentesque malesuada mattis velit id bibendum. Nulla maximus, justo eu elementum blandit, urna turpis posuere sapien, vel facilisis tellus nunc sit amet turpis. Proin tincidunt rhoncus turpis, et rhoncus diam luctus ut. Sed id leo varius, vehicula augue quis, dictum ligula. Praesent eget ex nec arcu bibendum viverra id ut mi. Proin lobortis tempus tellus ut pretium. Aliquam pretium sapien eget urna venenatis tincidunt.
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=1]{amia_template/pics/CNN-Performance.png}
+\caption{Model Accuracy}
+\label{fig2}
+\end{figure}
 
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=1]{amia_template/pics/Resnet-Performance.png}
+\caption{Model Accuracy}
+\label{fig2}
+\end{figure}
+
+ResNets however have a lot of parameters compared to conventional CNN networks. DenseNet retain all features of ResNet and go further by eliminating pitfalls of ResNet. DenseNets have much less parameters to train compared to ResNets (typically up to 3x less parameters)
+The base model is DenseNet121 using pretrained weights from ImageNet. We load a network that doesn't include the classification layers at the top, this is ideal for feature extraction.
+
+Currently we are only focusing on improving performance on Pneumonia and later we will expand on other diseases. This is to reduce complexity and getting a working model. Adding other diseases will mainly comprise of changing the classification layer and retraining on data-set with all labels. Currently we are using only 33,000  images for training. Using sampled dataset allows us to iterate faster and focus on removing bugs etc in our model and training code.
 \section*{Conclusion}
-Your conclusion goes at the end, followed by References, which must follow the Vancouver Style (see: www.icmje.org/index.html).  References begin below with a header that is centered.  Only the first word of an article title is capitalized in the References.
 
-\section*{Rushi}
-DenseNet are
+Although the performance of the model is below par right now but we feel we are on right track looking at our loss and accuracy plots. Also AUC is satisfactory at this point. Next we will expand the dataset and tune the model to get better performance and creating heatmaps for better visualization.
+
 
 \makeatletter
 \renewcommand{\@biblabel}[1]{\hfill #1.}
@@ -185,3 +182,15 @@ Gardner RM, Golubjatnikov OK, Laub RM, Jacobson JT, Evans RS. Computer-critiqued
 \end{thebibliography}
 
 \end{document}
+
+The base model is DenseNet121 using pretrained weights from ImageNet. We load a network that doesn't include the classification layers at the top; this is ideal for feature extraction.
+
+We make the model non-trainable since we will only use it for feature extraction; we won't update the weights of the pretrained model during training.
+
+We will concatenate DensNet and add more layers on top of that. We freeze the original layers and only train additional layers.
+
+ReLu activation
+
+Add a dropout rate of 0.2
+
+Add a final sigmoid layer for classification.
