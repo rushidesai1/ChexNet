@@ -32,17 +32,19 @@
 
 \textit{Chest X-ray imaging \cite{ref1} is a crucial medical technology used by physicians to diagnose disease and monitor treatment outcomes. Training a human radiologist is a lengthy and costly process. Deep learning techniques combined with availability of larger data sets increases the feasibility of building automated models with performance approaching human radiologists.}
 
-\textit{We present a scalable deep learning model trained on the ChestXray14 \cite{ref7} data set of X-ray images to detect and correctly classify presence of pneumonia. We plan to expand the model to classify 14 different diseases.}
+\textit{We present a scalable deep learning model trained on the ChestXray14 \cite{ref7} data set of X-ray images to detect and correctly classify presence of pneumonia. Once a good baseline has been established, the model will be expanded to classify 14 different diseases.}
 
 \section*{Introduction}
-A chest radiograph\cite{ref1}, or a chest X-ray (CXR) is one of the oldest and most common forms of medical imaging. A human radiologist requires significant training time and cost to be able to perform a comprehensive chest X-ray analysis with minimal error. Several types of abnormalities can show up in a chest radiograph that can lead to detection and diagnosis of several kinds of diseases but due to the vast number of different abnormalities and the overlapping reasons that might cause them, there’s plenty of room for human error.
+A chest radiograph\cite{ref1}, or a chest X-ray (CXR) is one of the oldest and most common forms of medical imaging. A human radiologist requires significant training time and cost to be able to perform a comprehensive chest X-ray analysis with minimal error. Several types of abnormalities can arise in a chest radiograph that helps lead to detection and diagnosis of a multitude of diseases. With the vast number of different abnormalities and the overlapping reasons that might cause them, human error becomes a major contribution to poor diagnosis.
 
-The revolution of machine learning and deep learning techniques combined with the availability of larger data sets\cite{ref2} and big data processing systems\cite{ref3} makes the analysis of X-ray images increasingly more realistic and the creation of automated models more feasible. The objective of this project is to train an efficient and scalable deep learning model which can learn from a data set of X-ray images to detect and correctly classify 14 different diseases. Automating the X-ray analysis makes the overall diagnosing process faster and less error-prone which significantly improves the patient’s treatment procedure.
+The revolution of machine learning and deep learning techniques combined with the availability of larger data sets\cite{ref2} and big data processing systems\cite{ref3} makes the analysis of X-ray images increasingly more realistic and the creation of automated models more feasible. The objective of this project is to train an efficient and scalable deep learning model which can learn from a data set of X-ray images to detect and correctly classify 14 different diseases. Automating the X-ray analysis makes the overall diagnosing process faster and less error-prone which significantly improves a patient’s treatment procedure.
 
 
 
 
 \section*{Approach}
+
+Our approach consists of 5 high-level activities:
 \begin{enumerate}
 \item Data set acquisition
 \item Image preprocessing - Apache Spark
@@ -51,8 +53,10 @@ The revolution of machine learning and deep learning techniques combined with th
 \item Model evaluation
 \end{enumerate}
 
+The details of each of these activites are covered in subsequent sections.
+
 \section*{Data acquisition}
-We acquired two different datasets of chest radiographs. The first is ChestXray14 from the NIH and all results from this paper are using this dataset. The second is CheXpert which we plan to use for our final results.
+Two different datasets were acquired that contained chest radiographs. The first is ChestXray14 from the NIH, the current results of this paper utilize the ChestXray14 dataset. The second, is CheXpert, which provides a substantial improvement to ChestXray14 with more training images and labels, CheXpert will be used later to improve the model and results.
 
 The CheXpert dataset was acquired upon registration and acceptance of the Stanford University School of Medicine CheXpert Dataset Research Use Agreement terms and conditions.\cite{ref2}
 
@@ -81,13 +85,14 @@ A CSV file is provided for each data set type (validation or training). Each ima
 
 \section*{Dataset Pre-Processing}
 
-CheXpert\cite{ref2} images are provided in high resolution which is not suitable for use as input to the model. Using a high resolution image significantly increases the number of input feature vectors which would require an increase in the model complexity and training time. Also, our strategy is to use pre-trained DenseNet with ImageNet weights, so we need to use the same number of input features. Data set images where preprocessed before training using Apache Spark which is a scalable big data processing technology. Several down-sampling techniques were used to reduce image size.
+CheXpert\cite{ref2} has high resolution images which are not suitable as input to the model. Using a high resolution image significantly increases the number of input feature vectors which would require an increase in the model complexity and training time. Also, our strategy is to use pre-trained DenseNet with ImageNet weights, so we need to use the same number of input features. Data set images were preprocessed before training using Apache Spark which is a scalable big data processing technology. Several down-sampling techniques were used to reduce image size.
 
 A convolution neural network (CNN) is said to have an invariance property when it is capable to robustly classify objects even if its placed in different orientations. To enrich the input data set and increase the number of available training samples, we performed data augmentation by generating several images with different orientations from a subset of input images.
 
-Each input image is down sampled by resizing to 224 by 224 pixels. An input image generates one or more augmented versions of itself (e.g. by horizontal flipping). Each output image is assigned an ID of type Long, and inherits all the labels from the original input image.
+Each input image is down sampled by resizing to 224 by 224 pixels. An input image generates one or more augmented versions of itself (e.g. by horizontal flipping). Each output image is assigned an ID of type Long, and inherits all the labels from the original input image. The model will utilize transfer learning by having a base DenseNet model trained on ImageNet, because of this, the images are normalized against the mean and standard deviation of the ImageNet training set.
 
 Pre-processed images are saved to HDFS, which is a highly distributed and scalable Big data storage system. Due to HDFS implementation and API limitations, storing several tiny image files is not an efficient operation.
+
 We decided to change the output format to be textual. Each image can be represented with the unsigned values of its byte stream (a vector of length $224\cdot224=50,176$ ). Each Spark RDD Partition will save its images as a space separated file with this format:
 
 \code{[Image ID] [bytes values]}
@@ -101,37 +106,37 @@ This new output storage format resulted in significant decrease of the pre-proce
 
 
 \section*{Metrics and Experimental Results}
-We will use AUC to determine performance of our results. We will compare it with the previous best performing results.
+AUC score is used to determine performance of the model, and will be compared against previous results obtained by other papers.
 
-To guide our training and see if we are on track, we will use loss curves and model accuracy plots. This will help us diagnose if our model is over-fitting, under-fitting etc. From our initial training, we have the loss curve as shown in Figure \ref{fig1}.
+To guide our training and see if we are on track, we will use loss curves and model accuracy plots. This will help us diagnose if our model is over-fitting or under-fitting. From our initial training, we have the loss curve as shown in Figure \ref{fig1}.
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.5]{amia_template/pics/model_loss_3.png}
+\includegraphics[scale=0.4]{amia_template/pics/model_loss_3.png}
 \caption{Model loss}
 \label{fig1}
 \end{figure}
 
-The loss curve indicates that we might have an issue with high variance. For this loss curve, we took a pre-trained DenseNet with ImageNet weights and added an additional 3 fully connected layers. We then froze all layers and trained only the additional layers. Once the additional layers were trained, we then unfroze a total of 9 layers including the newly added ones and went through training again.
+The current loss curve indicates that we might have an issue with high variance. For this loss curve, we took a pre-trained DenseNet with ImageNet weights and added an additional 3 fully connected layers. We then froze all layers and trained only the additional layers. Once the additional layers were trained, we then unfroze a total of 9 layers including the newly added ones and went through training again. Layers near the end of the model become more specialized to their training set, while layers near the start of the model are more general. Due to this behavior, retraining a select few top layers allows them to learn characteristics of chest X-Rays, and will help improve overall model performance and accuracy.
 
-The loss curve suggests trying approaches like procuring more data, training deeper into architecture by unfreezing more layers etc.
+The loss curve suggests trying approaches like procuring more data, training more layers in the architecture, and better data set analysis to check for class imbalances.
 
 Figure \ref{fig2} shows the accuracy curve. At this point we aren't getting a monotonic trend in our accuracy curve so we will continue to investigate methods to improve the accuracy. We also see that like model loss, accuracy also is performing poorly on the test set as compared to the training set. So we will focus on getting both training loss lower and accuracy higher and bring train and test metrics as close as possible.
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.5]{amia_template/pics/model_accuracy_3.png}
+\includegraphics[scale=0.4]{amia_template/pics/model_accuracy_3.png}
 \caption{Model Accuracy}
 \label{fig2}
 \end{figure}
 
 
 \section*{Discussion}
-Dense Convolution Networks (DenseNets) are a form of residual networks. Residual networks allow us to train much deeper networks than conventional CNN architecture since they handle the vanishing/exploding gradient problem much more effectively. Theoretically, it is expected that performance of models should increase as architecture grows deeper, and we should get monotonically decreasing performance. But in reality we don't see that since as the layers get deeper, the optimizer finds it more and more difficult to train the network due to the vanishing/exploding gradient problem. ResNet allow us to match the expected theoretical issue. Figure \ref{fig3} shows the depth vs performance characteristic.
+Dense Convolution Networks (DenseNets) are a form of residual network. Residual networks allow us to train much deeper networks than a conventional CNN architecture since they handle the vanishing/exploding gradient problem much more effectively. Theoretically, it is expected that performance of models should increase as architecture grows deeper, and we should get monotonically decreasing performance. But in reality we don't see that since as the layers get deeper, the optimizer finds it increasingly difficult to train the network due to the vanishing/exploding gradient problem. ResNet allow us to match the expected theoretical issue. Figure \ref{fig3} shows depth vs performance.
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.5]{amia_template/pics/Resnet-Plain-Performance.png}
+\includegraphics[scale=0.4]{amia_template/pics/Resnet-Plain-Performance.png}
 \caption{Model Accuracy}
 \label{fig3}
 \end{figure}
@@ -143,31 +148,34 @@ Currently we are only focusing on improving performance on the pneumonia disease
 
 Our main theory for getting poor results is due to a class imbalance of cases of pneumonia (1430 cases out of a total of 112,120 images; only 1.2\%). We hypothesize that re-balancing with a combination of data augmentation and sub-sampling the data set for non-pnuemonia cases will improve results. Data augmentation methods include  flipping images on horizontal and vertical axes, etc. We also used a phased approach to training where we kept most of the layers frozen during initial training and subsequently unfroze more and more layers. This helped in debugging and gave a sanity check during development.
 
-
-\section*{Conclusion}
-Although the performance of the model is below par currently with unsatisfactory AUC, we feel we have a solid pipeline to start from and a strategy for improvement. Next we will re-balance the dataset and tune the model to get better performance. We also intend to create class activation maps (CAM) heatmaps for better visualization as seen in Figure \ref{fig:cam_heatmap}.
-
-\makeatletter
-
 \bigskip
 
 \begin{figure}
 \centering
 \begin{subfigure}{.4\textwidth}
   \centering
-  \includegraphics[width=.7\linewidth]{amia_template/pics/source_xray_Pneumonia.png}
+  \includegraphics[width=.5\linewidth]{amia_template/pics/source_xray_Pneumonia.png}
   \caption{Source X-ray image}
   \label{fig:sub1}
 \end{subfigure}
 \begin{subfigure}{.4\textwidth}
   \centering
-  \includegraphics[width=.7\linewidth]{amia_template/pics/CAM_heatmap_of_Pneumonia_Detection_Positive_85.png}
+  \includegraphics[width=.5\linewidth]{amia_template/pics/CAM_heatmap_of_Pneumonia_Detection_Positive_85.png}
   \caption{Heatmap of pneumonia detection positive (85\%)}
   \label{fig:sub2}
 \end{subfigure}
 \caption{CAM heatmap \cite{ref5} }
 \label{fig:cam_heatmap}
 \end{figure}
+
+\section*{Conclusion}
+Although the performance of the model currently has unsatisfactory AUC, we feel we have a solid pipeline to start from and a strategy for improvement. Next we will re-balance the dataset and tune the model to get better performance. We also intend to create class activation maps (CAM) heatmaps for better visualization as seen in Figure \ref{fig:cam_heatmap}.
+
+\makeatletter
+
+\let\oldsection\section
+\renewcommand\section{\clearpage\oldsection}
+
 
 \renewcommand{\@biblabel}[1]{\hfill #1.}
 \makeatother
