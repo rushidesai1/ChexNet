@@ -4,6 +4,16 @@
 \usepackage[superscript,nomove]{cite}
 \usepackage{color}
 
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{amsmath, amsthm}
+\usepackage{booktabs}
+\RequirePackage[colorlinks]{hyperref}
+\usepackage[lined,boxed,linesnumbered,commentsnumbered]{algorithm2e}
+\usepackage{xcolor}
+\usepackage{listings}
 
 \begin{document}
 
@@ -126,10 +136,30 @@ Dense Convolution Networks (DenseNets) are a form of residual networks. Residual
 ResNets however have a lot of parameters compared to conventional CNN networks. DenseNet retain all features of ResNet and go further by eliminating pitfalls of ResNet. DenseNets have much less parameters to train compared to ResNets (typically up to 3x less parameters)
 The base model is DenseNet121 using pretrained weights from ImageNet. We load a network that doesn't include the classification layers at the top, this is ideal for feature extraction.
 
-Currently we are only focusing on improving performance on Pneumonia and later we will expand on other diseases. This is to reduce complexity and getting a working model. Adding other diseases will mainly comprise of changing the classification layer and retraining on data-set with all labels. Currently we are using only 33,000  images for training. Using sampled dataset allows us to iterate faster and focus on removing bugs etc in our model and training code.
+Currently we are only focusing on improving performance on Pneumonia and later we will expand on other diseases. This is to reduce complexity and getting a working model. Adding other diseases will mainly comprise of changing the classification layer and retraining on data-set with all labels. Currently we are using only 33,000 images for training. Using sampled dataset allows us to iterate faster and focus on removing bugs etc in our model and training code.
 \section*{Conclusion}
 
 Although the performance of the model is below par right now but we feel we are on right track looking at our loss and accuracy plots. Also AUC is not satisfactory at this point [insert AUC score here]. Next we will expand the dataset and tune the model to get better performance and creating heatmaps for better visualization.
+
+\bigskip
+
+\begin{figure}
+\centering
+\begin{subfigure}{.4\textwidth}
+  \centering
+  \includegraphics[width=.7\linewidth]{amia_template/pics/source_xray_Pneumonia.png}
+  \caption{Source x-ray image}
+  \label{fig:sub1}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+  \centering
+  \includegraphics[width=.7\linewidth]{amia_template/pics/CAM_heatmap_of_Pneumonia_Detection_Positive_85.png}
+  \caption{Heatmap of pneumonia detection positive (85\%)}
+  \label{fig:sub2}
+\end{subfigure}
+\caption{CAM heatmap}
+\label{fig:cam_heatmap}
+\end{figure}
 
 
 \makeatletter
