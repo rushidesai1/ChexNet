@@ -99,7 +99,7 @@ This new output storage format resulted in significant decrease of the pre-proce
 \section*{Metrics and Experimental Results}
 We will use AUC to determine performance of our results. We will compare it with the previous best performing results.
 
-To guide our training and see if we are on track, we will use loss curves and model accuracy plots. This will help us diagnose if our model is over-fitting, under-fitting etc. From our initial training, we have the loss curve as shown in Figure 1.
+To guide our training and see if we are on track, we will use loss curves and model accuracy plots. This will help us diagnose if our model is over-fitting, under-fitting etc. From our initial training, we have the loss curve as shown in Figure \ref{fig1}.
 
 \begin{figure}[h!]
 \centering
@@ -112,7 +112,7 @@ The loss curve indicates that we might have high variance issue. For this loss c
 
 The loss curve hints us trying approaches like getting more data, training deeper into architecture by unfreezing more layers etc.
 
-Figure 2 shows the accuracy curve. At this point we aren't getting a monotonic trend in accuracy curve so we will continue to investigate methods to improve the accuracy. We also see that like model loss, accuracy also is performing badly in test as compared to train. So we will focus on getting both train loss lower and accuracy higher and bring train and test metrics as close as possible.
+Figure \ref{fig2} shows the accuracy curve. At this point we aren't getting a monotonic trend in accuracy curve so we will continue to investigate methods to improve the accuracy. We also see that like model loss, accuracy also is performing badly in test as compared to train. So we will focus on getting both train loss lower and accuracy higher and bring train and test metrics as close as possible.
 
 \begin{figure}[h!]
 \centering
@@ -123,7 +123,7 @@ Figure 2 shows the accuracy curve. At this point we aren't getting a monotonic t
 
 
 \section*{Discussion}
-Dense Convolution Networks (DenseNets) are a form of residual networks. Residual networks allow us to train much deeper networks than conventional CNN architecture since they handle vanishing/exploding gradient problem much more effectively. Theoretically, it is expected that performance of models should increase as architecture grows deeper, and we should get monotonically decreasing performance. But in reality we don't see that since as layers get deeper, the optimizer find its more and more difficult to train the network due to Vanishing/Exploding gradient problem. Resnet allow us to match the expected theoretical issue. Figure 2 shows depth vs performance characteristic.
+Dense Convolution Networks (DenseNets) are a form of residual networks. Residual networks allow us to train much deeper networks than conventional CNN architecture since they handle vanishing/exploding gradient problem much more effectively. Theoretically, it is expected that performance of models should increase as architecture grows deeper, and we should get monotonically decreasing performance. But in reality we don't see that since as layers get deeper, the optimizer find its more and more difficult to train the network due to Vanishing/Exploding gradient problem. ResNet allow us to match the expected theoretical issue. Figure \ref{fig3} shows depth vs performance characteristic.
 
 \begin{figure}[h!]
 \centering
@@ -139,7 +139,9 @@ The base model is DenseNet121 using pretrained weights from ImageNet. We load a 
 Currently we are only focusing on improving performance on Pneumonia and later we will expand on other diseases. This is to reduce complexity and getting a working model. Adding other diseases will mainly comprise of changing the classification layer and retraining on data-set with all labels. Currently we are using only 33,000 images for training. Using sampled dataset allows us to iterate faster and focus on removing bugs etc in our model and training code.
 \section*{Conclusion}
 
-Although the performance of the model is below par right now but we feel we are on right track looking at our loss and accuracy plots. Also AUC is not satisfactory at this point [insert AUC score here]. Next we will expand the dataset and tune the model to get better performance and creating heatmaps for better visualization.
+Although the performance of the model is below par right now but we feel we are on right track looking at our loss and accuracy plots. Also AUC is not satisfactory at this point [insert AUC score here]. Next we will expand the dataset and tune the model to get better performance and creating class activation maps (CAM) heatmaps for better visualization as seen in Figure \ref{fig:cam_heatmap}.
+
+\makeatletter
 
 \bigskip
 
@@ -157,12 +159,10 @@ Although the performance of the model is below par right now but we feel we are 
   \caption{Heatmap of pneumonia detection positive (85\%)}
   \label{fig:sub2}
 \end{subfigure}
-\caption{CAM heatmap}
+\caption{CAM heatmap \cite{ref5} }
 \label{fig:cam_heatmap}
 \end{figure}
 
-
-\makeatletter
 \renewcommand{\@biblabel}[1]{\hfill #1.}
 \makeatother
 
