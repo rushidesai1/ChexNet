@@ -1,5 +1,8 @@
 # Keras in the cloud with Amazon SageMaker
 
+This is taken from the following tutorial:
+https://blog.betomorrow.com/keras-in-the-cloud-with-amazon-sagemaker-67cf11fb536
+
 ## Install from Pipfile
 Open a pipenv shell
 `pipenv shell`
