@@ -1,6 +1,6 @@
 import torch
 import pandas as pd
-import cxr_dataset as CXR
+import ChexDataset as CXR
 from torchvision import transforms, utils
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms, utils
