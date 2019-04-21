@@ -184,13 +184,14 @@ def train_model(
     return model, best_epoch
 
 
-def train_cnn(PATH_TO_IMAGES, LR, WEIGHT_DECAY):
+def train_cnn(PATH_TO_IMAGES, PATH_TO_LABELS, learning_rate, WEIGHT_DECAY, use_gpu=False):
     """
     Train torchvision model to NIH data given high level hyperparameters.
 
     Args:
         PATH_TO_IMAGES: path to NIH images
-        LR: learning rate
+        PATH_TO_LABELS: path to csv which contains labels
+        learning_rate: learning rate
         WEIGHT_DECAY: weight decay parameter for SGD
 
     Returns:
@@ -214,7 +215,7 @@ def train_cnn(PATH_TO_IMAGES, LR, WEIGHT_DECAY):
     N_LABELS = 14  # we are predicting 14 labels
 
     # load labels
-    df = pd.read_csv("nih_labels.csv", index_col=0)
+    # df = pd.read_csv("nih_labels.csv", index_col=0)
 
     # define torchvision transforms
     data_transforms = {
@@ -239,12 +240,12 @@ def train_cnn(PATH_TO_IMAGES, LR, WEIGHT_DECAY):
     transformed_datasets = {
         'train': CXR.ChexDataset(
             path_to_images=PATH_TO_IMAGES,
-            path_to_csv="../content/nih_labels.csv",
+            path_to_labels_csv=PATH_TO_LABELS,
             fold='train',
             transform=data_transforms['train']),
         'val': CXR.ChexDataset(
             path_to_images=PATH_TO_IMAGES,
-            path_to_csv="../content/nih_labels.csv",
+            path_to_labels_csv=PATH_TO_LABELS,
             fold='val',
             transform=data_transforms['val'])}
 
@@ -267,11 +268,17 @@ def train_cnn(PATH_TO_IMAGES, LR, WEIGHT_DECAY):
     num_features = model.classifier.in_features
     # add final layer with # outputs in same dimension of labels with sigmoid
     # activation
-    model.classifier = nn.Sequential(
-        nn.Linear(num_features, N_LABELS), nn.Sigmoid())
+    model.classifier = nn.Sequential(nn.Linear(num_features, N_LABELS), nn.Sigmoid())
 
     # put model on GPU
-    model = model.cuda()
+    if (use_gpu):
+        is_gpu_available = torch.cuda.is_available()
+        if not is_gpu_available:
+            raise ValueError("Error, Can't use GPU since hardware doesn't Support it, you idiot!")
+        gpu_count = torch.cuda.device_count()
+        print("Using GPU: Available GPU count:" + str(gpu_count))
+
+        model = model.cuda()
 
     # define criterion, optimizer for training
     criterion = nn.BCELoss()
@@ -279,13 +286,13 @@ def train_cnn(PATH_TO_IMAGES, LR, WEIGHT_DECAY):
         filter(
             lambda p: p.requires_grad,
             model.parameters()),
-        lr=LR,
+        lr=learning_rate,
         momentum=0.9,
         weight_decay=WEIGHT_DECAY)
     dataset_sizes = {x: len(transformed_datasets[x]) for x in ['train', 'val']}
 
     # train model
-    model, best_epoch = train_model(model, criterion, optimizer, LR, num_epochs=NUM_EPOCHS,
+    model, best_epoch = train_model(model, criterion, optimizer, learning_rate, num_epochs=NUM_EPOCHS,
                                     data_loaders=data_loaders, dataset_sizes=dataset_sizes, weight_decay=WEIGHT_DECAY)
 
     # get preds and AUCs on test fold

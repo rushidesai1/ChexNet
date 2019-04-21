@@ -10,7 +10,7 @@ class ChexDataset(Dataset):
     def __init__(
             self,
             path_to_images,
-            path_to_csv,
+            path_to_labels_csv,
             fold,
             transform=None,
             sample=0,
@@ -20,7 +20,7 @@ class ChexDataset(Dataset):
         # temporary, if we figure out way to do this during pre-processing we dont need this
         self.transform = transform
         self.path_to_images = path_to_images
-        self.df = pd.read_csv(path_to_csv)
+        self.df = pd.read_csv(path_to_labels_csv)
         self.df = self.df[self.df['fold'] == fold]  # filter all images belonging to this fold
 
         if sampled_images_path is not None:
