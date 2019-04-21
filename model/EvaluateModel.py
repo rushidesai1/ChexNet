@@ -9,8 +9,6 @@ import sklearn.metrics as sklm
 from torch.autograd import Variable
 import numpy as np
 
-from model.ChexDataset import ChexDataset
-
 
 def make_pred_multilabel(data_transforms, model, PATH_TO_IMAGES):
     """
@@ -31,7 +29,7 @@ def make_pred_multilabel(data_transforms, model, PATH_TO_IMAGES):
     model.train(False)
 
     # create data_loader
-    dataset = ChexDataset(
+    dataset = CXR.ChexDataset(
         path_to_images=PATH_TO_IMAGES,
         fold="test",
         transform=data_transforms['val'])
