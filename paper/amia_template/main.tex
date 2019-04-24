@@ -108,6 +108,29 @@ This new output storage format resulted in significant decrease of the pre-proce
 \section*{Metrics and Experimental Results}
 Accuracy, loss, and AUC scores are the main metrics used to evaluate the performance of the model.
 
+\begin{table}[]
+\begin{tabular}{p{3cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}}
+\toprule
+Pathology          & Wang et al. (2017) & Yao et al. (2017) & CheXNet & Ours (SGD) & Ours (Adam) \\ \midrule
+Atelectasis        & 0.716              & 0.772             & 0.8094  & 0.8104     & 0.7985      \\
+Cardiomegaly       & 0.807              & 0.904             & 0.9248  & 0.8977     & 0.9055      \\
+Consolidation      & 0.708              & 0.788             & 0.7901  & 0.7961     & 0.7945      \\
+Edema              & 0.835              & 0.882             & 0.8878  & 0.8837     & 0.8849      \\
+Effusion           & 0.784              & 0.859             & 0.8638  & 0.8798     & 0.8792      \\
+Emphysema          & 0.815              & 0.829             & 0.9371  & 0.9143     & 0.8951      \\
+Fibrosis           & 0.769              & 0.767             & 0.8047  & 0.8284     & 0.8063      \\
+Hernia             & 0.767              & 0.914             & 0.9164  & 0.9097     & 0.8810      \\
+Infiltration       & 0.609              & 0.695             & 0.7345  & 0.6999     & 0.6979      \\
+Mass               & 0.706              & 0.792             & 0.8676  & 0.8214     & 0.8211      \\
+Nodule             & 0.671              & 0.717             & 0.7802  & 0.7506     & 0.7226      \\
+Pleural Thickening & 0.708              & 0.765             & 0.8062  & 0.7713     & 0.7634      \\
+Pneumonia          & 0.633              & 0.713             & 0.7680  & 0.7678     & 0.7498      \\
+Pneumothorax       & 0.806              & 0.841             & 0.8887  & 0.8674     & 0.8533      \\ \bottomrule
+\end{tabular}
+\caption{Our models perform near CheXNet and outperforms the previous best published results.}
+\end{table}
+
+
 To guide our training and see if we are on track, we will use loss curves and model accuracy plots. This will help us diagnose if our model is over-fitting or under-fitting. From our initial training, we have the loss curve as shown in Figure \ref{fig1}.
 
 \begin{figure}[h!]
