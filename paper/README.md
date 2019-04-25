@@ -44,3 +44,7 @@ Final report:
 * up to 7-page write-up + 1 page reference (the same template as project draft), see sample papers for reference
 * 5-min presentation (Youtube (include link in paper) or audio attached slides) + slides
 * software implementation and documentation
+
+## Generating data tables in LaTeX
+One easy way to convert tabular data from Excel / Google Sheets to LaTeX:
+https://www.tablesgenerator.com/latex_tables
