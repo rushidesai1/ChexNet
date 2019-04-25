@@ -48,3 +48,7 @@ Final report:
 ## Generating data tables in LaTeX
 One easy way to convert tabular data from Excel / Google Sheets to LaTeX:
 https://www.tablesgenerator.com/latex_tables
+
+## PowerPoint template
+Georgia Tech PowerPoint templates are posted here:
+http://www.comm.gatech.edu/brand/downloads-templates
