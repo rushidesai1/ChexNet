@@ -58,29 +58,11 @@ The details of each of these activities are covered in subsequent sections.
 \section*{Data acquisition}
 Two different datasets were acquired that contained chest radiographs. The first is ChestXray14 from the NIH, the current results of this paper utilize the ChestXray14 dataset. The second, is CheXpert, which provides a substantial improvement to ChestXray14 with more training images and labels, CheXpert will be used later to improve the model and results.
 
-The CheXpert dataset was acquired upon registration and acceptance of the Stanford University School of Medicine CheXpert Dataset Research Use Agreement terms and conditions.\cite{ref2}
-
-\section*{Dataset format}
 The full ChestXray14 dataset consists of 112,120 chest radiographs of 30,805 patients. We are using this dataset for our initial training and results.
 
+The CheXpert dataset was acquired upon registration and acceptance of the Stanford University School of Medicine CheXpert Dataset Research Use Agreement terms and conditions.\cite{ref2}
+
 CheXpert consists of 224,316 chest radiographs of 65,240 patients. Each imaging study can pertain to one or more images, but most often are associated with two images: a frontal view and a lateral view. Images are provided with 14 labels derived from a natural language processing tool applied to the corresponding free-text radiology reports.
-
-Image files are provided following a specific directory structure:
-
-\definecolor{light-gray}{gray}{0.95}
-\newcommand{\code}[1]{\colorbox{light-gray}{\texttt{#1}}}
-
-\code{/[Data set type]/[Patient ID]/[Study ID]/[View ID]\_[view type].jpg}
-
-where data set type can be train (for training set) or valid (for validation set), and view type can be frontal or lateral.
-
-e.g. an input sample of a frontal study for a patient in the training set will be available at:
-
-\code{CheXpert/train/patient00001/study1/view1\_frontal.jpg}
-
-Each image is stored as a .jpg file with single channel (grey scale) where each pixel is stored as unsigned byte.
-
-A CSV file is provided for each data set type (validation or training). Each image record contains a file path, labels for different diseases (such as Cardiomegaly, Edema, Pneumonia, and so on), along with some demographic information about the patient such as sex and age.
 
 
 \section*{Dataset Pre-Processing}
