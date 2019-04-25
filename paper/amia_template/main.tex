@@ -65,7 +65,7 @@ The CheXpert dataset was acquired upon registration and acceptance of the Stanfo
 CheXpert consists of 224,316 chest radiographs of 65,240 patients. Each imaging study can pertain to one or more images, but most often are associated with two images: a frontal view and a lateral view. Images are provided with 14 labels derived from a natural language processing tool applied to the corresponding free-text radiology reports.
 
 
-\section*{Dataset Pre-Processing}
+\section*{Dataset pre-processing}
 
 CheXpert\cite{ref2} has high resolution images which are not suitable as input to the model. Using a high resolution image significantly increases the number of input feature vectors which would require an increase in the model complexity and training time. Also, our strategy is to use pre-trained DenseNet with ImageNet weights, so we need to use the same number of input features. Data set images were preprocessed before training using Apache Spark which is a scalable big data processing technology. Several down-sampling techniques were used to reduce image size.
 
@@ -85,7 +85,19 @@ A corresponding CSV file for labels is generated which starts with the Image ID 
 
 This new output storage format resulted in significant decrease of the pre-processing job run time, and was suitable as a direct input to the model.
 
+\section*{Method}
+Residual Networks (ResNets) allow us to train much deeper networks than a conventional CNN architecture since they handle the vanishing/exploding gradient problem much more effectively by allowing early layers to be directly connected to later ones. Dense Convolution Networks (DenseNets) are a form of residual network. Theoretically, it is expected that performance of models should increase as architecture grows deeper, and we should get monotonically decreasing performance. But in reality we don't see that since as the layers get deeper, the optimizer finds it increasingly difficult to train the network due to the vanishing/exploding gradient problem. ResNet allow us to match the expected theoretical issue. Figure \ref{fig3} shows depth vs performance.
 
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.4]{amia_template/pics/Resnet-Plain-Performance.png}
+\caption{Model Accuracy}
+\label{fig3}
+\end{figure}
+
+ResNets have significantly more parameters than conventional CNN networks. DenseNet retains all features of ResNet and goes further by eliminating some pitfalls of ResNet. DenseNets have much less parameters to train compared to ResNets (typically up to 3x less parameters). The base model we are using is DenseNet-121 with pretrained weights from ImageNet. For feature extraction purposes, we load a network that doesn't include the classification layers at the top.
+
+The DenseNet models trained on ImageNet have a depth of 121 (convolutional+pooling layer, 3 transition layers, and 1 classification layer and 4 dense block stages with 6, 12, 24, and 16 layers respectively.
 
 \section*{Metrics and Experimental Results}
 Accuracy, loss, and AUC scores are the main metrics used to evaluate the performance of the model.
@@ -112,7 +124,6 @@ Pneumothorax       & 0.806              & 0.841             & 0.8887  & 0.8674  
 \caption{Our models perform near CheXNet and outperforms the previous best published results.}
 \end{table}
 
-
 To guide our training and see if we are on track, we will use loss curves and model accuracy plots. This will help us diagnose if our model is over-fitting or under-fitting. From our initial training, we have the loss curve as shown in Figure \ref{fig1}.
 
 \begin{figure}[h!]
@@ -137,17 +148,6 @@ Figure \ref{fig2} shows the accuracy curve. At this point we aren't getting a mo
 
 
 \section*{Discussion}
-Dense Convolution Networks (DenseNets) are a form of residual network. Residual networks allow us to train much deeper networks than a conventional CNN architecture since they handle the vanishing/exploding gradient problem much more effectively. Theoretically, it is expected that performance of models should increase as architecture grows deeper, and we should get monotonically decreasing performance. But in reality we don't see that since as the layers get deeper, the optimizer finds it increasingly difficult to train the network due to the vanishing/exploding gradient problem. ResNet allow us to match the expected theoretical issue. Figure \ref{fig3} shows depth vs performance.
-
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.4]{amia_template/pics/Resnet-Plain-Performance.png}
-\caption{Model Accuracy}
-\label{fig3}
-\end{figure}
-
-
-ResNets however have a lot of parameters compared to conventional CNN networks. DenseNet retains all features of ResNet and goes further by eliminating some pitfalls of ResNet. DenseNets have much less parameters to train compared to ResNets (typically up to 3x less parameters). The base model we are using is DenseNet-121 with pretrained weights from ImageNet. For feature extraction purposes, we load a network that doesn't include the classification layers at the top.
 
 Currently we are only focusing on improving performance on the pneumonia and infiltration disease classes and later we will expand to other diseases. This is to reduce complexity and to focus on producing a working model. Adding other diseases will mainly comprise of changing the classification layer and retraining on the dataset with all labels included. Currently we are using about 100K images for training. Using a sampled dataset allows us to iterate faster and focus on removing bugs in our model and training code.
 
