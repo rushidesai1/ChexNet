@@ -76,6 +76,15 @@ Each input image is down sampled by resizing to 224x224 pixels. An input image g
 \section*{Method}
 Residual Networks (ResNets) allow us to train much deeper networks than a conventional CNN architecture since they handle the vanishing/exploding gradient problem much more effectively by allowing early layers to be directly connected to later ones. Dense Convolution Networks (DenseNets) are a form of residual network. Theoretically, it is expected that performance of models should increase as architecture grows deeper, and we should get monotonically decreasing performance. But in reality we don't see that since as the layers get deeper, the optimizer finds it increasingly difficult to train the network due to the vanishing/exploding gradient problem. ResNet allow us to match the expected theoretical issue. Figure \ref{fig3} shows depth vs performance.
 
+Some elementary statistics were gathered of the ChestXray14 dataset, since only images were used for this model, the only statistics gathered were regarding distribution. Class imbalances become prominent when looking at this chart, Hernia only compromises of 0.28\% of the total sample size, and Pneumonia only consists of 1.67\%.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.2]{amia_template/pics/classDist.png}
+\caption{DenseNet Layers}
+\label{figd}
+\end{figure}
+
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.2]{amia_template/pics/dense_net.png}
@@ -92,7 +101,7 @@ Residual Networks (ResNets) allow us to train much deeper networks than a conven
 
 ResNets have significantly more parameters than conventional CNN networks. DenseNet retains all features of ResNet and goes further by eliminating some pitfalls of ResNet. DenseNets have much less parameters to train compared to ResNets (typically up to 3x less parameters). You may refer to figure \ref{figx} which shows how DenseNet layers are connected. By concatenating all layer outputs together, the DenseNet helps solve the vanishing gradient problem as gradients no longer pass through arbitrarily deep convolutional towers. Instead each component is connected with others, with reduces overall parameters since redundant feature maps are not learned and better representational learning between layers occurs. One of the main insights between DenseNets and ResNets is that DenseNets concatenate features between layers, compared to ResNets which use a summation. This dense connectivity pattern is the primary reason why less feature parameters are usually required for DenseNets.
 
-The DenseNet models trained on ImageNet have a depth of 121. The architecture consists of a convolutional+pooling layer followed by 4 dense block stages. The dense block stages contain 6, 12, 24, and 16 units respectively, and each unit has 2 layers (composite layer with bottleneck layer). There is a single transition layer in between each dense block stage (for a total of 3 transition layers). Finally, there is 1 classification layer. 1 + 2(6) + 1 + 2(12) + 1 + 2(24) + 1 + 2(16) + 1 = 121. The base model we are using is DenseNet-121 BC with pre-trained weights from ImageNet. For feature extraction purposes, we load a network that doesn't include the classification layers at the top.
+The DenseNet models trained on ImageNet have a depth of 121. The architecture consists of a convolutional+pooling layer followed by 4 dense block stages. The dense block stages contain 6, 12, 24, and 16 units respectively, and each unit has 2 layers (composite layer with bottleneck layer). There is a single transition layer in between each dense block stage (for a total of 3 transition layers) which changes feature map size. Finally, there is 1 classification layer. 1 + 2(6) + 1 + 2(12) + 1 + 2(24) + 1 + 2(16) + 1 = 121. The base model we are using is DenseNet-121 BC with pre-trained weights from ImageNet. For feature extraction purposes, we load a network that doesn't include the classification layers at the top.
 
 The model utilizes transfer learning due to a training size of only 112,120, compared to the millions which modern day models use. The base layers of a model are very generic to the data set, while later layers get more specific and tailored to their data set. This means that the last few layers may be retrained by unfreezing their weights and training on the ChestXray14 data set. These layers then learn representations of thoracic diseases in these top layers while retaining general information in the earlier layers. Originally a few extra layers were added on top of the DenseNet model to help learn specifics of thoracic diseases, but due to over-fitting, these layers were removed and only the top 6 layers of the base model were retrained.
 
@@ -107,7 +116,7 @@ The machine learning pipeline consisted these primary stages.
 Accuracy, loss, and AUC scores are the main metrics used to evaluate the performance of the model.
 
 
-Training and validation loss curves were used to provide insight into the model performance. An initial loss curve may be seen in in Figure \ref{fig1}. It may be seen that the model started over-fitting near the second epoch, because of this the training was stopped at only 8 epochs since further training would lead to no benefits. Based on the loss curves, adding more layers and increasing complexity would most likely lead to more over-fitting. Further investigation into better data pre-processing may help alleviate over-fitting, such as further data augmentation to increase sample size, better handling of class imbalances, or using more thorough data sets such as CheXpert. For class imbalances specifically, some of the classes such as pneumonia had extreme imbalances, 1430  cases  out  of  a total of 112,120 images;  only 1.2\% of the overall data set.
+Training and validation loss curves were used to provide insight into the model performance. An initial loss curve may be seen in in Figure \ref{fig1}. It may be seen that the model started over-fitting near the second epoch, because of this the training was stopped at only 8 epochs since further training would lead to no benefits. Based on the loss curves, adding more layers and increasing complexity would most likely lead to more over-fitting. Further investigation into better data pre-processing may help alleviate over-fitting, such as further data augmentation to increase sample size, better handling of class imbalances, or using more thorough data sets such as CheXpert. For class imbalances specifically, some of the classes such as pneumonia had extreme imbalances, 1430  cases  out  of  a total of 112,120 images;  only 1.67\% of the overall data set.
 
 \begin{figure}[h!]
 \centering
@@ -117,6 +126,8 @@ Training and validation loss curves were used to provide insight into the model 
 \end{figure}
 
 The overall AUC score of the model compared to previous attempts may be viewed in Figure \ref{fig2}. Our variations of the model were able to get better performance in Atelectasis, Consolidation, Effusion, Fibrosis, and Pneumonia. Using stochastic gradient descent with momentum helped the model generalize better on a few of the diseases. Adam was able to provide good performance for most diseases as well, and further investigation into hyper parameter tuning may have provided better results.
+
+ADD MORE
 
 \begin{center}
 \begin{tabular}{p{3cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}}
@@ -168,7 +179,7 @@ Class Activation Maps (CAMS) were generated to visualize where the model was foc
 \end{figure*}
 
 \section*{Conclusion}
-DenseNets provide state of the art thoracic disease detection, at a fraction of the parameter cost of many modern day models. As a tool radiologists may use DenseNets to assist in initial diagnosis or verify diagnosis' of patients. ChestXray14 provides an excellent anonymoized dataset of chest X-rays which allows for the training of these high utility models. Using a DenseNet with data augmentation and hyperparameter tuning, we were able to in some cases surpass AUC and detection in select thoracic diseases. The use of class activation maps also enable verification of model focus and as a learning tool for radiologist to help identify what may lead to a diagnosis.
+DenseNets provide state of the art thoracic disease detection, at a fraction of the parameter cost of many modern day models. As a tool radiologists may use DenseNets to assist in initial diagnosis or verify patients diagnoses. ChestXray14 provides an excellent anonymoized dataset of chest X-rays which allows for the training of these high utility models. Using a DenseNet with data augmentation and hyperparameter tuning, we were able to surpass AUC and detection in select thoracic diseases. The use of class activation maps also enable verification of model focus and as a learning tool for radiologist to help identify what may lead to a diagnosis.
 
 Moving onwards, CheXpert may be integrated as a larger data set and an ensemble model may be created using two convolutional towers, one for lateral photos and one for frontal photos. This combination of two separate orientations will help increase performance. Other variations of DenseNet may also be looked into such as the 169 and 201 layer versions of the model. The team is currently looking for funding to pursue such endeavours.
 
