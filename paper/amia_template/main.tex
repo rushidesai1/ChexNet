@@ -32,12 +32,12 @@
 
 \textit{Chest X-ray imaging \cite{ref1} is a crucial medical technology used by physicians to diagnose disease and monitor treatment outcomes. Training a human radiologist is a lengthy and costly process. Deep learning techniques combined with availability of larger data sets increases the feasibility of building automated models with performance approaching human radiologists.}
 
-\textit{We present a scalable deep learning model trained on the ChestXray14 \cite{ref7} data set of X-ray images to detect and correctly classify presence of 14 thoracic diseases.}
+\textit{We present a scalable deep learning model trained on the ChestXray14 \cite{ref7} data set of X-ray images to detect and correctly classify presence of 14 thoracic pathologies.}
 
 \section*{Introduction}
 A chest radiograph\cite{ref1}, or a chest X-ray (CXR) is one of the oldest and most common forms of medical imaging. A human radiologist requires significant training time and cost to be able to perform a comprehensive chest X-ray analysis with minimal error. Several types of abnormalities can arise in a chest radiograph that helps lead to detection and diagnosis of a multitude of diseases. With the vast number of different abnormalities and the overlapping reasons that might cause them, human error becomes a major contribution to poor diagnosis.
 
-The revolution of machine learning and deep learning techniques combined with the availability of larger data sets\cite{ref2} and big data processing systems\cite{ref3} makes the analysis of X-ray images increasingly more realistic and the creation of automated models more feasible. The objective of this project is to train an efficient and scalable deep learning model which can learn from a data set of X-ray images to detect and correctly classify 14 different diseases. Automating the X-ray analysis makes the overall diagnosing process faster and less error-prone which significantly improves a patient’s treatment procedure.
+The revolution of machine learning and deep learning techniques combined with the availability of larger data sets\cite{ref2} and big data processing systems\cite{ref3} makes the analysis of X-ray images increasingly more realistic and the creation of automated models more feasible. The objective of this project is to train an efficient and scalable deep learning model which can learn from a data set of X-ray images to detect and correctly classify 14 different pathologies. Automating the X-ray analysis makes the overall diagnosing process faster and less error-prone which significantly improves a patient’s treatment procedure.
 
 
 
@@ -58,7 +58,7 @@ The details of each of these activities are covered in subsequent sections.
 \section*{Data acquisition}
 Two different datasets were acquired that contained chest radiographs. The first is ChestXray14 from the NIH, the current results of this paper utilize the ChestXray14 dataset. The second, is CheXpert, which provides a substantial improvement to ChestXray14 with more training images and labels, CheXpert was initially planned on being used to further improve performance, but due to rising costs of training the model it was not pursued.
 
-The full ChestXray14 dataset consists of 112,120 chest radiographs of 30,805 patients. The current model is trained off ChestXray14 and in some cases outperforms comparing models in performance for select diseases.
+The full ChestXray14 dataset consists of 112,120 chest radiographs of 30,805 patients. The current model is trained off ChestXray14 and in some cases outperforms comparing models in performance for select pathologies.
 
 The CheXpert dataset was acquired upon registration and acceptance of the Stanford University School of Medicine CheXpert Dataset Research Use Agreement terms and conditions.\cite{ref2}
 
@@ -130,9 +130,9 @@ Pneumothorax       & 0.806              & 0.841             & 0.8887  & 0.8674  
 
 The initial goal of this paper was to reproduce the competitive results from the ChexNet paper, and then improve upon the performance by using a more substantial data set. Due to increasing costs of training the model on Amazon Sagemaker, the decision was made to not use CheXpert as originally planned.
 
-Using only ChestXray14, better performance was achieved by using stochastic gradient descent (SGD) with momentum instead of the Adam optimizer. This was found to generalize better[reference] and provide better results on the test set. Other improvements to the performance would be utilizing deeper versions of the DenseNet model such as DenseNet-169, and DenseNet-201. Utilizing these models in an ensemble pattern would also provide benefits to the overall performance.
+Using only ChestXray14, better performance was achieved by using stochastic gradient descent (SGD) with momentum instead of the Adam optimizer. This was found to generalize better \cite{ref13} and provide better results on the test set. Other improvements to the performance would be utilizing deeper versions of the DenseNet model such as DenseNet-169, and DenseNet-201. Utilizing these models in an ensemble pattern would also provide benefits to the overall performance.
 
-Further plans to improve performance of the model were to integrate and train on the CheXpert dataset, this dataset has roughly twice the amount of images and also provides lateral chest X-rays, which have been found to account for 15\% accuracy in diagnosis of select thoracic diseases[reference]. The pre-processing spark code was developed to be agnostic to datasets and easily provide the necessary pre-processing on the data set.
+Further plans to improve performance of the model were to integrate and train on the CheXpert dataset, this dataset has roughly twice the amount of images and also provides lateral chest X-rays, which have been found to account for 15\% accuracy in diagnosis of select thoracic diseases \cite{ref2}. The pre-processing spark code was developed to be agnostic to datasets and easily provide the necessary pre-processing on the data set.
 
 Class Activation Maps (CAMS) were generated to visualize where the model was focusing to make its classification, an example may be seen in \ref{fig:cam_heatmap}. In the specific example generated by our model, the model correctly predicted Infiltration as the diagnosis and highlighted the right lung region which lead to the diagnosis. This is a useful tool for verifying correct and incorrect model predictions and help further fine-tune the model.
 
@@ -150,6 +150,7 @@ Class Activation Maps (CAMS) were generated to visualize where the model was foc
         \caption{Infiltration of right lung highlighted}
     \end{subfigure}
     \caption{Patient X-Ray & CAM Heatmap}
+\label{fig:cam_heatmap}
 \end{figure*}
 
 \section*{Conclusion}
