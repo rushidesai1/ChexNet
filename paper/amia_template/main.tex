@@ -32,7 +32,7 @@
 
 \textit{Chest X-ray imaging \cite{ref1} is a crucial medical technology used by physicians to diagnose disease and monitor treatment outcomes. Training a human radiologist is a lengthy and costly process. Deep learning techniques combined with availability of larger data sets increases the feasibility of building automated models with performance approaching human radiologists.}
 
-\textit{We present a scalable deep learning model trained on the ChestXray14 \cite{ref7} data set of X-ray images to detect and correctly classify presence of 14 thoracic pathologies.}
+\textit{We present a scalable deep learning model trained on the ChestXray14 \cite{ref7} data set of X-ray images to detect and correctly classify presence of 14 thoracic pathologies. We include class activation heatmaps of localization of the pathology in the image.}
 
 \section*{Introduction}
 A chest radiograph\cite{ref1}, or a chest X-ray (CXR) is one of the oldest and most common forms of medical imaging. A human radiologist requires significant training time and cost to be able to perform a comprehensive chest X-ray analysis with minimal error. Several types of abnormalities can arise in a chest radiograph that helps lead to detection and diagnosis of a multitude of diseases. With the vast number of different abnormalities and the overlapping reasons that might cause them, human error becomes a major contribution to poor diagnosis.
@@ -48,7 +48,7 @@ Our approach consists of 5 high-level activities:
 \begin{enumerate}
 \item Data acquisition
 \item Image preprocessing - Apache Spark
-\item Training DenseNet-121 deep learning model - Keras
+\item Training DenseNet-121 deep learning model - Keras + PyTorch
 \item Model validation and fine tuning
 \item Model evaluation
 \end{enumerate}
@@ -67,7 +67,7 @@ CheXpert consists of 224,316 chest radiographs of 65,240 patients. Each imaging 
 
 \section*{Dataset pre-processing}
 
-CheXpert\cite{ref2} has high resolution images which are not suitable as input to the model. Using a high resolution image significantly increases the number of input feature vectors increasing overall model complexity and training time. Another restriction to input image size is due to using a pretrained DenseNet model which was trained on ImageNet. Data set images were preprocessed before training using Apache Spark which is a scalable big data processing technology. The dataset was stored in Google Cloud Storage to provide a scale-able mechanism for handling the large data set. Several down-sampling techniques were used to reduce image size.
+CheXpert\cite{ref2} has high resolution images which are not suitable as input to the model. Using a high resolution image significantly increases the number of input feature vectors increasing overall model complexity and training time. Another restriction to input image size is due to using a pretrained DenseNet model which was trained on ImageNet. Data set images were preprocessed before training using Apache Spark which is a scalable big data processing technology. The dataset was stored in Google Cloud Storage to provide a scalable mechanism for handling the large data set. Several down-sampling techniques were used to reduce image size.
 
 A convolution neural network (CNN) is said to have an invariance property when it is capable to robustly classify objects even if its placed in different orientations. To enrich the input data set and increase the number of available training samples, horizontal flipping was applied randomly to images. This follows the DenseNet paper which found performance increases by adding horizontal flipping to the dataset.
 
@@ -106,7 +106,7 @@ The overall AUC score of the model compared to previous attempts may be viewed i
 
 \begin{center}
 \begin{tabular}{p{3cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}}
-Pathology          & Wang et al. (2017) & Yao et al. (2017) & CheXNet & Ours (SGD) & Ours (Adam) \\
+Pathology          & Wang et al. (2017) & Yao et al. (2017) & CheXNet & Ours (SGD + Momentum) & Ours (Adam) \\
 \midrule
 Atelectasis        & 0.716              & 0.772             & 0.8094  & 0.8104     & 0.7985      \\
 Cardiomegaly       & 0.807              & 0.904             & 0.9248  & 0.8977     & 0.9055      \\
@@ -149,19 +149,23 @@ Class Activation Maps (CAMS) were generated to visualize where the model was foc
         \includegraphics[height=1.2in]{amia_template/infiltration_right_lung_cam.png}
         \caption{Infiltration of right lung highlighted}
     \end{subfigure}
-    \caption{Patient X-Ray & CAM Heatmap}
+    \caption{Patient X-Ray \& CAM Heatmap}
 \label{fig:cam_heatmap}
 \end{figure*}
 
 \section*{Conclusion}
-Although the model currently has unsatisfactory performance characteristics, we feel we have a solid pipeline to start from and a strategy for improvement. Next we will re-balance the dataset and tune the model to get better performance. We also intend to create class activation maps (CAM) heatmaps for better visualization as seen in Figure \ref{fig:cam_heatmap}.
+DenseNets provide state of the art thoracic disease detection, at a fraction of the parameter cost of many modern day models. As a tool radiologists may use DenseNets to assist in initial diagnosis or verify diagnosis' of patients. ChestXray14 provides an excellent anonymoized dataset of chest x rays which allows for the training of these high utility models. Using a DenseNet with data augmentation and hyperparameter tuning, we were able to in some cases surpass AUC and detection in select thoracic diseases. The use of class activation maps also enable verification of model focus and as a learning tool for radiologist to help identify what may lead to a diagnosis.
+
+Moving onwards, CheXpert may be integrated as a larger data set and an ensemble model may be created using two convolutional towers, one for lateral photos and one for frontal photos. This combination of two separate orientations will help increase performance. Other variations of DenseNet may also be looked into such as the 169 and 201 layer versions of the model. The team is currently looking for funding to pursue such endeavours.
+
+As chest X-rays are the most significant examination tool used in practice for screening and diagnosis of thoracic disease, the team hopes to provide better tooling and support for such a vital component of patient support. With limited radiologists available, approximately two thirds of the global population are deficient of access to a specialist for screening and diagnosis \cite{ref16}. Using this algorithm, patients without access to an expert may still be able to get expert level opinions and help reduce overall mortality rates throughout the world.
 
 \pagebreak
 
 \section*{Contributions}
 We had full participation and collaboration from all group members. We met frequently on Google Hangouts to discuss strategies and progress, about a dozen meetings in all. We also collaborated via Slack (over 1000 messages).
 
-Filip - modeling in Keras, prototype in Colaboratory, GitHub setup, Google Drive setup
+Filip - modeling in Keras, prototype in Colaboratory, GitHub setup, Google Cloud Storage setup.
 
 Rushi - modeling in PyTorch and SageMaker, Class Activation Modeling (CAM), billing monitoring
 
@@ -229,6 +233,8 @@ Gardner RM, Golubjatnikov OK, Laub RM, Jacobson JT, Evans RS. Computer-critiqued
 \bibitem{ref13}
 Wilson A, Roelofs R, Stern M, Srebro N, Recht B. The Marginal Value of Adaptive Gradient Methods in Machine Learning [Internet]. Arxiv.org. 2017.
 
+\bibitem{ref16}
+Mollura, Daniel J, Azene, Ezana M, Starikovsky, Anna, Thelwell, Aduke, Iosifescu, Sarah, Kimble, Cary, Polin, Ann, Garra, Brian S, DeStigter, Kristen K, Short, Brad, et al. White paper report of the rad-aid conference on international radiology for developing countries: identifying challenges, opportunities, and strategies for imaging services in the developing world. Journal of the American College of Radiology, 7(7):495–500, 2010
 \end{thebibliography}
 
 \end{document}
