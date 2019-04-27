@@ -120,26 +120,25 @@ object App {
   def main(args: Array[String]): Unit = {
 
 
-
     val spark = SparkHelper.spark
     val sc = spark.sparkContext
+
 
     import spark.implicits._
 
 
 
-    //example for s3 : https://stackoverflow.com/questions/27914145/read-files-recursively-from-sub-directories-with-spark-from-s3-or-local-filesyst
     //load images
     spark.read.format("image")
       .option("dropInvalid", true)
-      .load("images/CheXpert-v1.0-small/train/*/*").createOrReplaceTempView("images")
+      .load("images/input/train/*/*").createOrReplaceTempView("images")
 
 
     val images: RDD[ImageRow] =spark.sql("select image.origin,image.width,image.height,image.nChannels, image.mode , image.data from images")
       .rdd.map(asImageRow(_))
 
     val labels= spark.read.format("csv").option("header", "true").load("labels/train.csv").as[Label].rdd
-    val labelsPrefix="CheXpert-v1.0-small/train/"
+    val labelsPrefix="input/train/"
 
     val adjustedImages=images.map(i=>i.copy(file = dropPrefix(i.file,labelsPrefix) )).map(i=>(i.file,i))
 

@@ -19,16 +19,16 @@ lazy val commonSettings = Seq(
 
 
 lazy val hadoopDependencies = Seq(
-//  "org.apache.hadoop" % "hadoop-hdfs" % hadoopVersion,
-//  "org.apache.hadoop" % "hadoop-aws" % hadoopVersion,
+ // "org.apache.hadoop" % "hadoop-hdfs" % hadoopVersion,
+ // "org.apache.hadoop" % "hadoop-aws" % hadoopVersion,
 //  "org.apache.hadoop" % "hadoop-common" % hadoopVersion
 )
 
 lazy val sparkDependencies = Seq(
-  "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
-  "org.apache.spark" %% "spark-mllib" % sparkVersion% "provided",
+  "org.apache.spark" %% "spark-sql" % sparkVersion ,
+  "org.apache.spark" %% "spark-mllib" % sparkVersion,
   "org.apache.spark" %% "spark-hive" % sparkVersion,
-  "org.apache.spark" %% "spark-core" % sparkVersion% "provided",
+  "org.apache.spark" %% "spark-core" % sparkVersion,
 )
 
 
