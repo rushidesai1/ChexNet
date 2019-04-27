@@ -56,7 +56,7 @@ Our approach consists of 5 high-level activities:
 The details of each of these activities are covered in subsequent sections.
 
 \section*{Data acquisition}
-Two different datasets were acquired that contained chest radiographs. The first is ChestXray14 from the NIH, the current results of this paper utilize the ChestXray14 dataset. The second, is CheXpert, which provides a substantial improvement to ChestXray14 with more training images and labels, CheXpert was initially planned on being used to further improve performance, but due to rising costs of training the model it was not pursued.
+Two different datasets were acquired that contained chest radiographs. The first is ChestXray14 from the NIH, the current results of this paper utilize the ChestXray14 dataset. The second is CheXpert, which provides a substantial improvement to ChestXray14 with more training images and labels. CheXpert was initially planned on being used to further improve performance, but due to rising costs of training the model it was not pursued.
 
 The full ChestXray14 dataset consists of 112,120 chest radiographs of 30,805 patients. The current model is trained off ChestXray14 and in some cases outperforms comparing models in performance for select pathologies.
 
@@ -78,16 +78,30 @@ Residual Networks (ResNets) allow us to train much deeper networks than a conven
 
 \begin{figure}[h!]
 \centering
+\includegraphics[scale=0.2]{amia_template/pics/dense_net.png}
+\caption{DenseNet Layers}
+\label{figx}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
 \includegraphics[scale=0.4]{amia_template/pics/Resnet-Plain-Performance.png}
 \caption{Model Accuracy}
 \label{fig3}
 \end{figure}
 
-ResNets have significantly more parameters than conventional CNN networks. DenseNet retains all features of ResNet and goes further by eliminating some pitfalls of ResNet. DenseNets have much less parameters to train compared to ResNets (typically up to 3x less parameters). The base model we are using is DenseNet-121 BC with pretrained weights from ImageNet. For feature extraction purposes, we load a network that doesn't include the classification layers at the top.
+ResNets have significantly more parameters than conventional CNN networks. DenseNet retains all features of ResNet and goes further by eliminating some pitfalls of ResNet. DenseNets have much less parameters to train compared to ResNets (typically up to 3x less parameters). You may refer to figure \ref{figx} which shows how DenseNet layers are connected. By concatenating all layer outputs together, the DenseNet helps solve the vanishing gradient problem as gradients no longer pass through arbitrarily deep convolutional towers. Instead each component is connected with others, with reduces overall parameters since redundant feature maps are not learned and better representational learning between layers occurs. One of the main insights between DenseNets and ResNets is that DenseNets concatenate features between layers, compared to ResNets which use a summation. This dense connectivity pattern is the primary reason why less feature parameters are usually required for DenseNets.
 
-The DenseNet models trained on ImageNet have a depth of 121. The architecture consists of a convolutional+pooling layer followed by 4 dense block stages. The dense block stages contain 6, 12, 24, and 16 units respectively, and each unit has 2 layers (composite layer with bottleneck layer). There is a single transition layer in between each dense block stage (for a total of 3 transition layers). Finally, there is 1 classification layer. 1 + 2(6) + 1 + 2(12) + 1 + 2(24) + 1 + 2(16) + 1 = 121.
+The DenseNet models trained on ImageNet have a depth of 121. The architecture consists of a convolutional+pooling layer followed by 4 dense block stages. The dense block stages contain 6, 12, 24, and 16 units respectively, and each unit has 2 layers (composite layer with bottleneck layer). There is a single transition layer in between each dense block stage (for a total of 3 transition layers). Finally, there is 1 classification layer. 1 + 2(6) + 1 + 2(12) + 1 + 2(24) + 1 + 2(16) + 1 = 121. The base model we are using is DenseNet-121 BC with pre-trained weights from ImageNet. For feature extraction purposes, we load a network that doesn't include the classification layers at the top.
 
-The model utilized transfer learning due to a training size of only 112,120, compared to the millions which modern day models use. The base layers of a model are very generic to the data set, while later layers get more specific and tailored to their data set. This means that the last few layers may be retrained by unfreezing their weights and training on the ChestXray data set. These layers then learn representations of thoracic diseases in these top layers while retaining general information in the earlier layers.
+The model utilizes transfer learning due to a training size of only 112,120, compared to the millions which modern day models use. The base layers of a model are very generic to the data set, while later layers get more specific and tailored to their data set. This means that the last few layers may be retrained by unfreezing their weights and training on the ChestXray14 data set. These layers then learn representations of thoracic diseases in these top layers while retaining general information in the earlier layers. Originally a few extra layers were added on top of the DenseNet model to help learn specifics of thoracic diseases, but due to over-fitting, these layers were removed and only the top 6 layers of the base model were retrained.
+
+The machine learning pipeline consisted these primary stages.
+\begin{enumerate}
+  \item Use Google Cloud Storage bucket as primary data access point for the data set. This provided fast and scalable usage which allows any data set to easily be used.
+  \item Pre-process and augment data set using Spark, downsampling, horizontal flipping, and mean/std normalization were some techniques utilized in this step.
+  \item Initial model development was done in Google Colab, then ported over to Amazon SageMaker for a scalable and persistent platform to train the model.
+\end{enumerate}
 
 \section*{Metrics and Experimental Results}
 Accuracy, loss, and AUC scores are the main metrics used to evaluate the performance of the model.
@@ -154,11 +168,11 @@ Class Activation Maps (CAMS) were generated to visualize where the model was foc
 \end{figure*}
 
 \section*{Conclusion}
-DenseNets provide state of the art thoracic disease detection, at a fraction of the parameter cost of many modern day models. As a tool radiologists may use DenseNets to assist in initial diagnosis or verify diagnosis' of patients. ChestXray14 provides an excellent anonymoized dataset of chest x rays which allows for the training of these high utility models. Using a DenseNet with data augmentation and hyperparameter tuning, we were able to in some cases surpass AUC and detection in select thoracic diseases. The use of class activation maps also enable verification of model focus and as a learning tool for radiologist to help identify what may lead to a diagnosis.
+DenseNets provide state of the art thoracic disease detection, at a fraction of the parameter cost of many modern day models. As a tool radiologists may use DenseNets to assist in initial diagnosis or verify diagnosis' of patients. ChestXray14 provides an excellent anonymoized dataset of chest X-rays which allows for the training of these high utility models. Using a DenseNet with data augmentation and hyperparameter tuning, we were able to in some cases surpass AUC and detection in select thoracic diseases. The use of class activation maps also enable verification of model focus and as a learning tool for radiologist to help identify what may lead to a diagnosis.
 
 Moving onwards, CheXpert may be integrated as a larger data set and an ensemble model may be created using two convolutional towers, one for lateral photos and one for frontal photos. This combination of two separate orientations will help increase performance. Other variations of DenseNet may also be looked into such as the 169 and 201 layer versions of the model. The team is currently looking for funding to pursue such endeavours.
 
-As chest X-rays are the most significant examination tool used in practice for screening and diagnosis of thoracic disease, the team hopes to provide better tooling and support for such a vital component of patient support. With limited radiologists available, approximately two thirds of the global population are deficient of access to a specialist for screening and diagnosis \cite{ref16}. Using this algorithm, patients without access to an expert may still be able to get expert level opinions and help reduce overall mortality rates throughout the world.
+As chest X-rays are the most significant examination tool used in practice for screening and diagnosis of thoracic disease, the team hopes to provide better tooling and support for such a vital component of patient support. With limited radiologists available, approximately two thirds of the global population have deficient access to a specialist for screening and diagnosis \cite{ref16}. Using this algorithm, patients without access to an expert may still be able to get expert level opinions and help reduce overall mortality rates throughout the world.
 
 \pagebreak
 
@@ -172,6 +186,14 @@ Rushi - modeling in PyTorch and SageMaker, Class Activation Modeling (CAM), bill
 Mohamed (Fawy) - modeling in PyTorch and SageMaker, Class Activation Modeling (CAM), pre-processing in Spark
 
 Doug - EMR prototype, SageMaker Keras prototype, LaTeX formatting, presentation slides
+
+\section*{Challenges}
+
+We encountered the following challenges in this project:
+
+- Cost of training on public cloud service like Amazon SageMaker, especially GPU
+
+
 
 \makeatletter
 
