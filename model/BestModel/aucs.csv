@@ -1,0 +1,15 @@
+label             ,auc
+Atelectasis       ,0.810392620057878
+Cardiomegaly      ,0.8997417914639986
+Consolidation     ,0.7960764637336722
+Edema             ,0.8837382313142674
+Effusion          ,0.87982132198697
+Emphysema         ,0.9142870953762043
+Fibrosis          ,0.828428183174659
+Hernia            ,0.9096637355269604
+Infiltration      ,0.6999364868465718
+Mass              ,0.8214454068201028
+Nodule            ,0.7506337964619338
+Pleural_Thickening,0.771324292049744
+Pneumonia         ,0.7677727710411082
+Pneumothorax      ,0.8673964936526207
