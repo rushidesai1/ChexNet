@@ -1,6 +1,6 @@
 ## Training
 
-We did our training on Sagemaker. However, due to cost reasons we have closed down the instance.
+We did our training on Amazon SageMaker. However, due to cost reasons we have closed down the instance.
 
 Steps to run training:
 
