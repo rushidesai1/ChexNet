@@ -9,7 +9,7 @@ Steps to run training:
 2. In the second to last cell (with section title *Train-Validate*), you can change the # of images you want during train, validation and test phase and any other parameter you want to change.
 3. The labels csv file is checked in GitHub. We didnt check into some public repo since that was one of the requirement not put the data into public. Here are the steps to get a workable url for fetch label file.
     
-    a. Copy past the following url in browser, https://github.gatech.edu/gist/rdesai65/e127e4cade5054eaadc8f886c7223e0a
+    a. Copy and paste the following url in browser, https://github.gatech.edu/gist/rdesai65/e127e4cade5054eaadc8f886c7223e0a
     
     b. Click on "raw" and copy the url you get.
     
