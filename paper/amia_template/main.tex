@@ -14,6 +14,8 @@
 \usepackage[lined,boxed,linesnumbered,commentsnumbered]{algorithm2e}
 \usepackage{xcolor}
 \usepackage{listings}
+\usepackage[utf8x]{inputenc}
+\usepackage{float}
 
 \begin{document}
 
@@ -32,15 +34,12 @@
 
 \textit{Chest X-ray imaging \cite{ref1} is a crucial medical technology used by physicians to diagnose disease and monitor treatment outcomes. Training a human radiologist is a lengthy and costly process. Deep learning techniques combined with availability of larger data sets increases the feasibility of building automated models with performance approaching human radiologists.}
 
-\textit{We present a scalable deep learning model trained on the ChestXray14 \cite{ref7} data set of X-ray images to detect and correctly classify presence of 14 thoracic pathologies. We tried to beat current state of the art performance of models, and in some cases were able to succeed. Class activation heatmaps are included which highlight areas of localization for the pathology in the image.}
+\textit{We present a scalable deep learning model trained on the ChestXray14 \cite{ref7} data set of X-ray images to detect and correctly classify presence of 14 thoracic pathologies. We tried to beat current state of the art performance of models, and in some cases we were able to succeed. Class activation heatmaps are included which highlight areas of localization for the pathology in the image.}
 
 \section*{Introduction}
 A chest radiograph\cite{ref1}, or a chest X-ray (CXR) is one of the oldest and most common forms of medical imaging. A human radiologist requires significant training time and cost to be able to perform a comprehensive chest X-ray analysis with minimal error. Several types of abnormalities can arise in a chest radiograph that helps lead to detection and diagnosis of a multitude of diseases. With the vast number of different abnormalities and the overlapping reasons that might cause them, human error becomes a major contribution to poor diagnosis.
 
-The revolution of machine learning and deep learning techniques combined with the availability of larger data sets\cite{ref2} and big data processing systems\cite{ref3} makes the analysis of X-ray images increasingly more realistic and the creation of automated models more feasible. The objective of this project is to train an efficient and scalable deep learning model which can learn from a data set of X-ray images to detect and correctly classify 14 different pathologies. Automating the X-ray analysis makes the overall diagnosing process faster and less error-prone which significantly improves a patient’s treatment procedure.
-
-
-
+The revolution of machine learning and deep learning techniques combined with the availability of larger data sets\cite{ref2} and big data processing systems\cite{ref3} makes the analysis of X-ray images increasingly more realistic and the creation of automated models more feasible. The objective of this project is to train an efficient and scalable deep learning model based off of DenseNets\cite{ref4}, which can learn from a data set of X-ray images to detect and correctly classify 14 different pathology's. Automating the X-ray analysis makes the overall diagnosing process faster and less error-prone which significantly improves a patient’s treatment procedure.
 
 \section*{Approach}
 
@@ -56,7 +55,7 @@ Our approach consists of 5 high-level activities:
 The details of each of these activities are covered in subsequent sections.
 
 \section*{Data acquisition}
-Two different datasets were considered for chest radiographs. The first is ChestXray14 from the NIH, the current results of this paper utilize the ChestXray14 dataset. The second is CheXpert, which provides a substantial improvement to ChestXray14 with more training images and labels. CheXpert was initially planned on being used to further improve performance, but due to rising costs of training the model it was not pursued.
+Two different datasets were considered for chest radiographs. The first is ChestXray14 from the NIH, the current results of this paper utilize the ChestXray14 dataset. The second is CheXpert, which provides a substantial improvement to ChestXray14 with more training images and labels. CheXpert was initially planned on being used to further improve performance, but due to rising costs of training the model, it was not pursued.
 
 The full ChestXray14 dataset consists of 112,120 chest radiographs of 30,805 patients. The current model is trained off ChestXray14 and in some cases outperforms comparing models in performance for select pathologies.
 
@@ -64,33 +63,33 @@ CheXpert\cite{ref2} consists of 224,316 chest radiographs of 65,240 patients. Ea
 
 \section*{Data Information}
 
-ChestXRay14\cite{ref2} has high resolution images which are not suitable as input to the model. Using a high resolution image significantly increases the number of input feature vectors increasing overall model complexity and training time. Another restriction to input image size is due to using a pretrained DenseNet model which was trained on ImageNet. Data set images were preprocessed before training using Apache Spark which is a scalable big data processing technology. The dataset was stored in Google Cloud Storage to provide a scalable mechanism for handling the large data set. Several down-sampling techniques were used to reduce image size.
+ChestXRay14 has high resolution images which are not suitable as input to the model. Using a high resolution image significantly increases the number of input feature vectors increasing overall model complexity and training time. Another restriction to input image size is due to using a pretrained DenseNet model which was trained on ImageNet. Data set images were preprocessed before training using Apache Spark which is a scalable big data processing technology. The dataset was stored in Google Cloud Storage to provide a scalable mechanism for handling the large data set. Several down-sampling techniques were used to reduce image size.
 
 A convolution neural network (CNN) is said to have an invariance property when it is capable to robustly classify objects even if its placed in different orientations. To enrich the input data set and increase the number of available training samples, horizontal flipping was applied randomly to images. This follows the DenseNet paper which found performance increases by adding horizontal flipping to the dataset.
 
 Each input image is down sampled by resizing to 224x224 pixels. An input image generates one or more augmented versions of itself (e.g. by horizontal flipping). The DenseNet model utilizes transfer learning, and was originally trained on the ImageNet dataset, because of this the training data was normalized by the mean and standard deviation of the ImageNet dataset.
 
-Some elementary statistics were gathered of the ChestXray14 dataset, this may be seen in Figure \ref{figd} Class imbalances become prominent when looking at this chart, Hernia only compromises of 0.28\% of the total sample size, and Pneumonia only consists of 1.67\%. Further data pre-processing could be done to address these class imbalances such as re-sampling the data set to get more even distributions and adjusting class weights when training the model.
-
-\section*{Method}
-Residual Networks (ResNets) allow us to train much deeper networks than a conventional CNN architecture since they handle the vanishing/exploding gradient problem much more effectively by allowing early layers to be directly connected to later ones. Dense Convolution Networks (DenseNets) are a form of residual network. Theoretically, it is expected that performance of models should increase as architecture grows deeper, but in reality as the network gets deeper, the optimizer finds it increasingly difficult to train the network due to the vanishing/exploding gradient problem. ResNet allow us to match the expected theoretical issue.
-
-\begin{figure}[h!]
+Some elementary statistics were gathered of the ChestXray14 dataset, this may be seen in Figure \ref{figd}. Class imbalances become prominent when looking at this chart, Hernia only compromises of 0.28\% of the total sample size, and Pneumonia only consists of 1.67\%. Further data pre-processing could be done to address these class imbalances such as re-sampling the data set to get more even distributions and adjusting class weights when training the model.
+\\
+\begin{figure}[H]
 \centering
-\includegraphics[scale=0.40]{amia_template/pics/classDist.png}
+\includegraphics[scale=0.35]{amia_template/pics/classDist.png}
 \caption{ChestXray14 Data Distribution}
 \label{figd}
 \end{figure}
 
-\begin{figure}[h!]
+\section*{Method}
+Residual Networks (ResNets) allow us to train much deeper networks than a conventional CNN architecture since they handle the vanishing/exploding gradient problem much more effectively by allowing early layers to be directly connected to later ones. Dense Convolution Networks (DenseNets) are a form of residual network. Theoretically, it is expected that performance of models should increase as architecture grows deeper, but in reality as the network gets deeper, the optimizer finds it increasingly difficult to train the network due to the vanishing/exploding gradient problem. ResNet allow us to match the expected theoretical issue.
+
+ResNets have significantly more parameters than conventional CNN networks. DenseNet retains all features of ResNet and goes further by eliminating some pitfalls of ResNet. DenseNets have much less parameters to train compared to ResNets (typically up to 3x less parameters). You may refer to Figure \ref{figx} which shows how DenseNet layers are connected. By concatenating all layer outputs together, the DenseNet helps solve the vanishing gradient problem as gradients no longer pass through arbitrarily deep convolutional towers. Instead each component is directly connected with other layers, which reduces overall parameters since redundant feature maps are not learned and better representational learning between layers occurs. One of the main insights between DenseNets and ResNets is that DenseNets concatenate features between layers, compared to ResNets which uses a summation. This dense connectivity pattern is the primary reason why less feature parameters are usually required for DenseNets.
+\\
+\begin{figure}[!htb]
 \centering
 \includegraphics[scale=0.2]{amia_template/pics/dense_net.png}
 \caption{DenseNet Layers}
 \label{figx}
 \end{figure}
-
-ResNets have significantly more parameters than conventional CNN networks. DenseNet retains all features of ResNet and goes further by eliminating some pitfalls of ResNet. DenseNets have much less parameters to train compared to ResNets (typically up to 3x less parameters). You may refer to figure \ref{figx} which shows how DenseNet layers are connected. By concatenating all layer outputs together, the DenseNet helps solve the vanishing gradient problem as gradients no longer pass through arbitrarily deep convolutional towers. Instead each component is directly connected with other layers, which reduces overall parameters since redundant feature maps are not learned and better representational learning between layers occurs. One of the main insights between DenseNets and ResNets is that DenseNets concatenate features between layers, compared to ResNets which use a summation. This dense connectivity pattern is the primary reason why less feature parameters are usually required for DenseNets.
-
+\\
 The DenseNet models trained on ImageNet have a depth of 121. The architecture consists of a convolutional+pooling layer followed by 4 dense block stages. The dense block stages contain 6, 12, 24, and 16 units respectively, and each unit has 2 layers (composite layer with bottleneck layer). There is a single transition layer in between each dense block stage (for a total of 3 transition layers) which changes feature map size. Finally, there is 1 classification layer. 1 + 2(6) + 1 + 2(12) + 1 + 2(24) + 1 + 2(16) + 1 = 121. The base model we are using is DenseNet-121 BC with pre-trained weights from ImageNet. For feature extraction purposes, we load a network that doesn't include the classification layers at the top.
 
 The model utilizes transfer learning due to a training size of only 112,120 samples, compared to the millions of samples which modern day models use. The base layers of a model are very generic to the data set, while later layers get more specific and tailored to their data set. Originally a few extra layers were added on top of the DenseNet model to help learn specifics of thoracic diseases, but due to over-fitting, these layers were removed. Normally in transfer learning, only the top few layers are re-trained since they are specific to their base training data set, but we found better results by re-training the entire model end to end to learn the ChestXray14 data set.
@@ -105,41 +104,40 @@ The machine learning pipeline consisted these primary stages.
 \section*{Metrics and Experimental Results}
 Accuracy, loss, and AUC scores are the main metrics used to evaluate the performance of the model.
 
+Training and validation loss curves were used to provide insight into the model performance. An initial loss curve may be seen in in Figure \ref{figloss}. It may be seen that the model started over-fitting near the second epoch, because of this the training was stopped at only 8 epochs since further training would lead to no benefits. Based on the loss curves, adding more layers and increasing complexity would most likely lead to more over-fitting. Further investigation into better data pre-processing may help alleviate over-fitting, such as further data augmentation to increase sample size, better handling of class imbalances, or using more thorough data sets such as CheXpert. For class imbalances specifically, some of the classes such as pneumonia had extreme imbalances, 1872  cases  out  of  a total of 112,120 images;  only 1.67\% of the overall data set.
 
-Training and validation loss curves were used to provide insight into the model performance. An initial loss curve may be seen in in Figure \ref{fig1}. It may be seen that the model started over-fitting near the second epoch, because of this the training was stopped at only 8 epochs since further training would lead to no benefits. Based on the loss curves, adding more layers and increasing complexity would most likely lead to more over-fitting. Further investigation into better data pre-processing may help alleviate over-fitting, such as further data augmentation to increase sample size, better handling of class imbalances, or using more thorough data sets such as CheXpert. For class imbalances specifically, some of the classes such as pneumonia had extreme imbalances, 1872  cases  out  of  a total of 112,120 images;  only 1.67\% of the overall data set.
-
-\begin{figure}[h!]
+\begin{figure}[!htb]
 \centering
-\includegraphics[scale=0.4]{amia_template/pics/loss_curve.png}
+\includegraphics[scale=0.6]{amia_template/pics/loss_curve.png}
 \caption{Model loss}
-\label{fig1}
+\label{figloss}
 \end{figure}
 
-The overall AUC score of the model compared to previous attempts may be viewed in Figure \ref{fig2}. Multiple variations of the model with different pre-processing were testing, the main 3 ones which provides promising results were stochastic gradient descent with momentum with no horizontal flipping, stochastic gradient descent with momentum and horizontal flipping, and Adam optimizer with horizontal flipping. Other variations of flipping and model hyper parameter tuning were attempted but they did not provide sufficient results and are thus not included.
+The overall AUC score of the model compared to previous attempts may be viewed in Table \ref{table:tableauc} . Multiple variations of the model with different pre-processing were testing, the main 3 ones which provides promising results were stochastic gradient descent with momentum with no horizontal flipping, stochastic gradient descent with momentum and horizontal flipping, and Adam optimizer with horizontal flipping. Other variations of flipping and model hyper parameter tuning were attempted but they did not provide sufficient results and are thus not included.
 
 Our variations of the model were able to get better performance in Atelectasis, Consolidation, Effusion, Fibrosis. Although these four diseases provided promising improvements, there were some large decreases AUC score compared to ChexNet. Infiltration, Nodule, and Pleural Thickening are three of the diseases whose AUC scores decreased substantially compared to CheXNet. Horizontal flipping actually decreased performance in most cases, we hypothesize this is due to applying this augmentation randomly across the entire data set, instead of focusing on specific classes, which may have exacerbated class imbalances which currently exist in the data set.
 
-\begin{center}
-\begin{tabular}{p{3cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}}
-Pathology & Wang et al. (2017) & Yao et al. (2017) & CheXNet & Ours (SGD w/o flipping) & Ours (Adam w/ flipping) & Ours (SGD w/ flipping) & Best Model \\
+\begin{table}[H]
+\begin{tabular}{p{3cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}}
+Pathology & Wang et al.\cite{ref7} & Yao et al.\cite{ref8} & Gündel et al.\cite{ref9} & Liu et al.\cite{ref6} & CheXNet\cite{ref5} & Ours (SGD w/o flipping) & Ours (Adam w/ flipping) & Ours (SGD w/ flipping) \\
 \midrule
-Atelectasis & 0.716 & 0.772 & 0.8094 & \textbf{0.8104} & 0.7985 & 0.7799 \\
-Cardiomegaly & 0.807 & 0.904 & 0.9248 & 0.8977 & \textbf{0.9055} & 0.8938 \\
-Consolidation & 0.708 & 0.788 & 0.7901 & \textbf{0.7961} & 0.7945 & 0.7878 \\
-Edema & 0.835 & 0.882 & 0.8878 & 0.8837 & \textbf{0.8849} & 0.8790 \\
-Effusion & 0.784 & 0.859 & 0.8638 & \textbf{0.8798} & 0.8792 & 0.8658 \\
-Emphysema & 0.815 & 0.829 & 0.9371 & \textbf{0.9143} & 0.8951 & 0.8334 \\
-Fibrosis & 0.769 & 0.767 & 0.8047 & \textbf{0.8284} & 0.8063 & 0.7819 \\
-Hernia & 0.767 & 0.914 & 0.9164 & \textbf{0.9097} & 0.8810 & 0.7738 \\
-Infiltration & 0.609 & 0.695 & 0.7345 & \textbf{0.6999} & 0.6979 & 0.6854 \\
-Mass & 0.706 & 0.792 & 0.8676 & \textbf{0.8214} & 0.8211 & 0.7837 \\
-Nodule & 0.671 & 0.717 & 0.7802 & \textbf{0.7506} & 0.7226 & 0.7018 \\
-Pleural Thickening & 0.708 & 0.765 & 0.8062 & \textbf{0.7713} & 0.7634 & 0.7505 \\
-Pneumonia & 0.633 & 0.713 & 0.7680 & \textbf{0.7678} & 0.7498 & 0.7289 \\
-Pneumothorax & 0.806 & 0.841 & 0.8887 & \textbf{0.8674} & 0.8533 & 0.8187 \\
+Atelectasis & 0.716 & 0.772 & 0.767 & 0.781 & 0.8094 & \textbf{0.8104} & 0.7985 & 0.7799 \\
+Cardiomegaly & 0.807 & 0.904 & 0.883 & 0.885 & 0.9248 & 0.8977 & \textbf{0.9055} & 0.8938 \\
+Consolidation & 0.708 & 0.788 & 0.828 & 0.832 & 0.7901 & \textbf{0.7961} & 0.7945 & 0.7878 \\
+Edema & 0.835 & 0.882 & 0.709 & 0.7 & 0.8878 & 0.8837 & \textbf{0.8849} & 0.8790 \\
+Effusion & 0.784 & 0.859 & 0.821 & 0.815 & 0.8638 & \textbf{0.8798} & 0.8792 & 0.8658 \\
+Emphysema & 0.815 & 0.829 & 0.758 & 0.765 & 0.9371 & \textbf{0.9143} & 0.8951 & 0.8334 \\
+Fibrosis & 0.769 & 0.767 & 0.731 & 0.719 & 0.8047 & \textbf{0.8284} & 0.8063 & 0.7819 \\
+Hernia & 0.767 & 0.914 & 0.846 & 0.866 & 0.9164 & \textbf{0.9097} & 0.8810 & 0.7738 \\
+Infiltration & 0.609 & 0.695 & 0.745 & 0.743 & 0.7345 & \textbf{0.6999} & 0.6979 & 0.6854 \\
+Mass & 0.706 & 0.792 & 0.835 & 0.842 & 0.8676 & \textbf{0.8214} & 0.8211 & 0.7837 \\
+Nodule & 0.671 & 0.717 & 0.895 & 0.921 & 0.7802 & \textbf{0.7506} & 0.7226 & 0.7018 \\
+Pleural Thickening & 0.708 & 0.765 & 0.818 & 0.835 & 0.8062 & \textbf{0.7713} & 0.7634 & 0.7505 \\
+Pneumonia & 0.633 & 0.713 & 0.761 & 0.791 & 0.7680 & \textbf{0.7678} & 0.7498 & 0.7289 \\
+Pneumothorax & 0.806 & 0.841 & 0.896 & 0.911 & 0.8887 & \textbf{0.8674} & 0.8533 & 0.8187 \\
 \end{tabular}
-\end{center}
-
+\caption{\label{table:tableauc}AUC Scores Comparison}
+\end{table}
 
 \section*{Discussion}
 
@@ -147,11 +145,12 @@ The initial goal of this paper was to reproduce the competitive results from the
 
 Using only ChestXray14, better performance was achieved by using stochastic gradient descent (SGD) with momentum instead of the Adam optimizer. This was found to generalize better \cite{ref13} and provide better results on the test set. Other improvements to the performance would be utilizing deeper versions of the DenseNet model such as DenseNet-169, and DenseNet-201. Utilizing these models in an ensemble pattern would also provide benefits to the overall performance.
 
-Further plans to improve performance of the model were to integrate and train on the CheXpert dataset, this dataset has roughly twice the amount of images and also provides lateral chest X-rays, which have been found to account for 15\% accuracy in diagnosis of select thoracic diseases \cite{ref2}. The pre-processing spark code was developed to be agnostic to datasets and easily provide the necessary pre-processing on the data set.
+Further plans to improve performance of the model were to integrate and train on the CheXpert dataset, this dataset has roughly twice the amount of images and also provides lateral chest X-rays, which have been found to account for 15\% accuracy in diagnosis of select thoracic diseases \cite{ref10}. The pre-processing spark code was developed to be agnostic to datasets and easily provide the necessary pre-processing on the data set.
 
-Class Activation Maps (CAMS) were generated to visualize where the model was focusing to make its classification, an example may be seen in \ref{fig:cam_heatmap}. In the specific example generated by our model, the model correctly predicted Infiltration as the diagnosis and highlighted the right lung region which lead to the diagnosis. This is a useful tool for verifying correct and incorrect model predictions and help further fine-tune the model.
+Class Activation Maps (CAMS)\cite{ref11} were generated to visualize where the model was focusing to make its classification, an example may be seen in \ref{fig:cam_heatmap}. In the specific example generated by our model, the model correctly predicted Infiltration as the diagnosis and highlighted the right lung region which lead to the diagnosis. This is a useful tool for verifying correct and incorrect model predictions and help further fine-tune the model.
+\\
 
-\begin{figure*}[t!]
+\begin{figure*}[!htb]
     \centering
     \begin{subfigure}[t]{0.5\textwidth}
         \centering
@@ -181,24 +180,24 @@ As chest X-rays are the most significant examination tool used in practice for s
 
 We encountered the following challenges in this project:
 \begin{enumerate}
-    \item Cost of training on public cloud service like Amazon SageMaker, especially GPU.
+    \item Cost of training on public cloud service like Amazon SageMaker, especially GPU. We learned to focus more on getting good results on public resources before porting over to a cloud instance for training.
     \item Format of Spark saving to and retrieving from HDFS, especially with png files.
-    \itemTransferring File format between pre-proccessing step and model training step
-    \item  Difficulties with getting the model to properly gain from transfer learning and the number of layers to unfreeze during training.
-    \item  Difficult to implement unit tests within deep learning code.
+    \item Transferring File format between pre-proccessing step and model training step
+    \item  Difficulties with getting the model to properly gain from transfer learning and the number of layers to unfreeze during training. Learned about varying depths of re-training layers and practices to ensure proper transfer learning such as normalization against the base data sets mean and std.
+    \item  Difficult to implement unit tests within deep learning code. There were some bugs which affected training output, but through careful analysis they were discovered. More research into unit testing frameworks has been pursued.
+    \item Navigating a Dense121 Model to attach a hook to the correct layer. Needed to extract the correct neuron values and dimensions of the last convolution layer before flattening to generate the Class Activation Map (CAM).
 \end{enumerate}
 
 \section*{Contributions}
 We had full participation and collaboration from all group members. We met frequently on Google Hangouts to discuss strategies and progress, about a dozen meetings in all. We also collaborated via Slack (over 1000 messages).
 
-Filip - modeling in Keras, model training/evaluation, prototype in Colaboratory, GitHub setup, Google Cloud Storage setup.
+Filip Juristovski - modeling in Keras, model training/evaluation, prototype in Colaboratory, GitHub setup, Google Cloud Storage setup, paper
 
-Rushi - modeling in PyTorch/SageMaker, Model training/evaluation and billing monitoring
+Rushi Desai - modeling in PyTorch/SageMaker, Model training/evaluation and billing monitoring, paper
 
-Mohamed - modeling in PyTorch/SageMaker, Class Activation Map (CAM), pre-processing in Spark
+Mohamed Abdelrazik - modeling in PyTorch/SageMaker, Class Activation Map (CAM), pre-processing in Spark, paper
 
-Doug - EMR prototype, SageMaker Keras prototype, LaTeX formatting, presentation slides
-
+Doug Beatty - EMR prototype, SageMaker Keras prototype, LaTeX formatting, presentation slides, paper
 \makeatletter
 
 \let\oldsection\section
@@ -246,15 +245,6 @@ Raoof S, Feigin D, Sung A, Raoof S, Irugulpati L, Rosenow E. Interpretation of P
 
 \bibitem{ref11}
 Zhou B, Khosla A, Lapedriza A, Oliva A, Torralba A. Learning deep features for discriminative localization [Internet]. Arxiv.org. 2019.
-
-\bibitem{ref12}
-http://www.stat.harvard.edu/Faculty\_Content/meng/JCGS01.pdf
-
-\bibitem{ref98}
-Pryor TA, Gardner RM, Clayton RD, Warner HR. The HELP system. J Med Sys. 1983;7:87-101.
-
-\bibitem{ref99}
-Gardner RM, Golubjatnikov OK, Laub RM, Jacobson JT, Evans RS. Computer-critiqued blood ordering using the HELP system. Comput Biomed Res 1990;23:514-28.
 
 \bibitem{ref13}
 Wilson A, Roelofs R, Stern M, Srebro N, Recht B. The Marginal Value of Adaptive Gradient Methods in Machine Learning [Internet]. Arxiv.org. 2017.
