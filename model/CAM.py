@@ -1,22 +1,16 @@
+from glob import glob
 
-import torch
-
-from keras.preprocessing import image
-from torchsummary import summary
-from PIL import Image
-from torchvision import models, transforms
-from torch.autograd import Variable
-from torch.nn import functional as F
-
+import matplotlib.pyplot as plt
 import numpy as np
 import scipy as sp
-import matplotlib.pyplot as plt 
-
-from glob import glob
+import torch
+from PIL import Image
+from keras.preprocessing import image
+from torch.nn import functional as F
+from torchvision import transforms
 
 images=glob('images/*.png')
 
-from torchvision import models
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 state = torch.load('results/checkpoint')
