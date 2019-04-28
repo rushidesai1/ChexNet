@@ -37,6 +37,7 @@ print("Available GPU count:" + str(gpu_count))
 def checkpoint(model, best_loss, epoch, LR):
     """
     Saves checkpoint of torchvision model during training.
+    Code from https://pytorch.org/tutorials/beginner/saving_loading_models.html
 
     Args:
         model: torchvision model to be saved
@@ -48,6 +49,7 @@ def checkpoint(model, best_loss, epoch, LR):
     """
 
     print('saving')
+    # https: // pytorch.org / tutorials / beginner / saving_loading_models.html
     state = {
         'model': model,
         'best_loss': best_loss,
@@ -72,7 +74,7 @@ def train_model(
     Fine tunes torchvision model to NIH CXR data.
 
     Args:
-        model: torchvision model to be finetuned (densenet-121 in this case)
+        model: torchvision model to be finetuned (densenet-121)
         criterion: loss criterion (binary cross entropy loss, BCELoss)
         optimizer: optimizer to use in training (SGD)
         learning_rate: learning rate
@@ -85,13 +87,15 @@ def train_model(
         best_epoch: epoch on which best model val loss was obtained
 
     """
-    # since = time.time()
+    since = time.time()
 
     start_epoch = 1
     best_loss = 999999
     best_epoch = -1
     last_train_loss = -1
 
+    # This is mainly copy paste from homeworks except to adjust to accommodate for multiple dataloaders.
+    # Other parts of code comes from collab notebooks we had experimented.
     # iterate over epochs
     for epoch in range(start_epoch, num_epochs + 1):
         print('Epoch {}/{}'.format(epoch, num_epochs))
@@ -100,6 +104,7 @@ def train_model(
         # set model to train or eval mode based on whether we are in train or
         # val; necessary to get correct predictions given batchnorm
         for phase in ['train', 'val']:
+            print("Epoch {}/{}, phase:{}".format(epoch, num_epochs, phase))
             if phase == 'train':
                 model.train(True)
             else:
@@ -109,23 +114,38 @@ def train_model(
 
             i = 0
             total_done = 0
+            #             print("Epoch {}/{}, phase:{}, start".format(epoch, num_epochs, phase))
             # iterate over all data in train/val dataloader:
             for data in data_loaders[phase]:
+                #                 print("for:"+str(i))
                 i += 1
                 inputs, labels, _ = data
+                #                 print("for-2:")
                 batch_size = inputs.shape[0]
-                inputs = Variable(inputs.cuda())
-                labels = Variable(labels.cuda()).float()
+                #                 print("for-3:")
+                labels = labels.float()
+                #                 print("Epoch {}/{}, phase:{}, got input,labels".format(epoch, num_epochs, phase))
+                if use_gpu:
+                    inputs = Variable(inputs.cuda())
+                    labels = Variable(labels.cuda()).float()
+
+                #                 print("Epoch {}/{}, phase:{}, start-model(inputs)".format(epoch, num_epochs, phase))
                 outputs = model(inputs)
+                #                 print("Epoch {}/{}, phase:{}, end-model(inputs)".format(epoch, num_epochs, phase))
 
                 # calculate gradient and update parameters in train phase
+                #                 print("Epoch {}/{}, phase:{}, update grad".format(epoch, num_epochs, phase))
                 optimizer.zero_grad()
                 loss = criterion(outputs, labels)
                 if phase == 'train':
                     loss.backward()
                     optimizer.step()
-
-                running_loss += loss.data[0] * batch_size
+                #                 print("Epoch {}/{}, phase:{}, running_loss: {}".format(epoch, num_epochs, phase, running_loss))
+                #                 current_loss =
+                #                 if loss.data[0]
+                running_loss += loss.item() * batch_size
+                print("Epoch {}/{}, phase:{}, running_loss: {}, current_loss: {}".format(epoch, num_epochs, phase,
+                                                                                         running_loss, loss.item()))
 
             epoch_loss = running_loss / dataset_sizes[phase]
 
@@ -173,9 +193,9 @@ def train_model(
             print("no improvement in 3 epochs, break")
             break
 
-    # time_elapsed = time.time() - since
-    # print('Training complete in {:.0f}m {:.0f}s'.format(
-    #     time_elapsed // 60, time_elapsed % 60))
+    time_elapsed = time.time() - since
+    print('Training complete in {:.0f}m {:.0f}s'.format(
+        time_elapsed // 60, time_elapsed % 60))
 
     # load best model weights to return
     checkpoint_best = torch.load('results/checkpoint')
@@ -283,9 +303,7 @@ def train_cnn(PATH_TO_IMAGES, PATH_TO_LABELS, learning_rate, WEIGHT_DECAY, use_g
     # define criterion, optimizer for training
     criterion = nn.BCELoss()
     optimizer = optim.SGD(
-        filter(
-            lambda p: p.requires_grad,
-            model.parameters()),
+        filter(lambda p: p.requires_grad, model.parameters()),
         lr=learning_rate,
         momentum=0.9,
         weight_decay=WEIGHT_DECAY)

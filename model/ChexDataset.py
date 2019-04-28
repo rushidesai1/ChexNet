@@ -25,6 +25,7 @@ class ChexDataset(Dataset):
 
         if sampled_images_path is not None:
             sampled_images = pd.read_csv(sampled_images_path)
+            # sampled_images shoulkd just contain image names deliminated by \n
             self.df = pd.merge(left=self.df, right=sampled_images, how="inner", on="Image Index")
 
         # can limit to sample, useful for testing
@@ -65,8 +66,10 @@ class ChexDataset(Dataset):
 
     def __getitem__(self, idx):
 
-        # read custom format
-        # convert to image format:
+        #         print("getItem: "+ str(idx)+"\n")
+
+        # read custom format as defined in discussion with Fawy
+        # convert to image format: mostly re-shape of array
 
         image = Image.open(
             os.path.join(
