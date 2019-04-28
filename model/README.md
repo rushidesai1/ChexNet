@@ -1,6 +1,6 @@
 ## Training
 
-We did our training on Sagemaker. However, due to cost reasons we have closed down the instance.
+We did our training on Amazon SageMaker. However, due to cost reasons we have closed down the instance.
 
 Steps to run training:
 
@@ -15,6 +15,6 @@ Steps to run training:
     
     c. Click on "Fetch Labels" section. Replace the existing url in !wget with the url you copied in previous step.
  
- 4. Currently due to some bug, the execution fails on first run if there is not GPU. If you are running the code on GPU everything work in first go. If your one CPU then we recommend to first all cells with train_sampled=1, val_sampled=1, test_sampled=1 and EPOCH=1
+ 4. Currently due to some bug, the execution fails on first run if there is not GPU. If you are running the code on GPU everything will work in the first go. If you're on CPU then we recommend to first update all cells with train_sampled=1, val_sampled=1, test_sampled=1 and EPOCH=1
  
  5. Run All cells
