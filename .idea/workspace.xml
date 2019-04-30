@@ -2,9 +2,226 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65fce590-ba2c-4791-88ba-ff7925af451a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/model/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KerasSageMaker/CAM.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/CAM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/100.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/101.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/102.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/103.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/104.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/105.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/106.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/107.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/108.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/109.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/110.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/111.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/112.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/113.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/114.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/115.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/116.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/117.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/118.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/119.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/12.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/120.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/121.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/122.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/123.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/124.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/125.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/126.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/127.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/129.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/13.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/130.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/131.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/132.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/133.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/134.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/135.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/136.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/137.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/138.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/139.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/14.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/140.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/141.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/142.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/143.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/144.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/145.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/146.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/147.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/148.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/149.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/15.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/150.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/151.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/152.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/153.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/154.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/155.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/156.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/157.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/158.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/159.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/16.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/160.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/161.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/162.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/163.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/164.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/165.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/166.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/167.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/168.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/169.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/17.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/170.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/171.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/172.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/173.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/174.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/175.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/176.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/177.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/18.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/19.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/20.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/21.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/22.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/23.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/24.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/25.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/26.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/27.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/28.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/29.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/30.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/31.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/32.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/33.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/34.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/35.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/36.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/37.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/38.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/39.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/40.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/41.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/42.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/43.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/44.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/45.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/46.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/47.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/48.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/49.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/50.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/51.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/52.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/53.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/54.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/55.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/56.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/57.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/58.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/59.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/60.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/61.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/62.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/63.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/64.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/65.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/66.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/67.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/68.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/69.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/70.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/71.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/72.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/73.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/74.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/75.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/76.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/77.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/78.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/79.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/80.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/81.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/82.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/83.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/84.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/85.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/86.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/87.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/88.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/89.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/90.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/91.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/92.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/93.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/94.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/95.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/96.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/97.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/98.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/jpg/99.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/._SUCCESS.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/.part-00000-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/.part-00001-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/.part-00002-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/.part-00003-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/.part-00004-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/.part-00005-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/.part-00006-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/.part-00007-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/.part-00008-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/.part-00009-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/.part-00010-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/.part-00011-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/.part-00012-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/.part-00013-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/.part-00014-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/.part-00015-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/_SUCCESS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/part-00000-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/part-00001-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/part-00002-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/part-00003-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/part-00004-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/part-00005-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/part-00006-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/part-00007-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/part-00008-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/part-00009-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/part-00010-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/part-00011-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/part-00012-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/part-00013-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/part-00014-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/images/txt/part-00015-f00aa2a0-30e4-4547-a6f8-a20c096111f7-c000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/labels/._SUCCESS.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/labels/.part-00000-f40cda81-f12f-4954-82e6-3a973e26218c-c000.csv.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/labels/_SUCCESS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/output/labels/part-00000-f40cda81-f12f-4954-82e6-3a973e26218c-c000.csv" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -62,7 +279,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/ChexModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
+            <state relative-caret-position="3000">
               <caret line="229" selection-start-line="229" selection-end-line="229" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
@@ -71,11 +288,53 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/CAM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="93" column="23" selection-start-line="93" selection-start-column="23" selection-end-line="93" selection-end-column="23" />
+            <state relative-caret-position="108">
+              <caret line="40" selection-start-line="40" selection-end-line="40" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1620">
+              <caret line="108" selection-start-line="108" selection-end-line="108" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="135">
+                <caret line="5" selection-start-line="5" selection-end-line="5" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/preprocessing/src/main/scala/edu/chexpert/App.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/preprocessing/build.sbt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
             </state>
           </provider>
         </entry>
@@ -144,14 +403,16 @@
         <option value="$PROJECT_DIR$/model/Visualize.py" />
         <option value="$PROJECT_DIR$/model/ChexDataset.py" />
         <option value="$PROJECT_DIR$/model/ChexModel.py" />
+        <option value="$PROJECT_DIR$/model/CAM.py" />
+        <option value="$PROJECT_DIR$/model/BestModel/aucs.csv" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="x" value="210" />
-    <option name="y" value="143" />
-    <option name="width" value="1260" />
-    <option name="height" value="721" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1680" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -171,6 +432,28 @@
               <item name="ChestXRay" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ChestXRay" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ChestXRay" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ChestXRay" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ChestXRay" type="462c0819:PsiDirectoryNode" />
+              <item name="preprocessing" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ChestXRay" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ChestXRay" type="462c0819:PsiDirectoryNode" />
+              <item name="preprocessing" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ChestXRay" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ChestXRay" type="462c0819:PsiDirectoryNode" />
+              <item name="preprocessing" type="462c0819:PsiDirectoryNode" />
+              <item name="labels" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -181,7 +464,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/data" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/FinalSubmission" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -192,12 +475,14 @@
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/data" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/model" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/FinalSubmission" />
+      <recent name="$PROJECT_DIR$/model/BestModel" />
+      <recent name="$PROJECT_DIR$/data" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -303,17 +588,68 @@
       <option name="presentableId" value="Default" />
       <updated>1554085398059</updated>
       <workItem from="1555864962074" duration="8102000" />
-      <workItem from="1556436099562" duration="274000" />
+      <workItem from="1556436099562" duration="712000" />
+      <workItem from="1556437657625" duration="3935000" />
     </task>
+    <task id="LOCAL-00001" summary="Removing uneeded files and Adding Cam code to correct directory">
+      <created>1556436415489</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1556436415489</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Committing best model">
+      <created>1556439941778</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1556439941778</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Adding final submission zip">
+      <created>1556440407762</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1556440407762</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Adding final submission zip">
+      <created>1556441041088</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1556441041089</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Adding final submission zip">
+      <created>1556597129689</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1556597129689</updated>
+    </task>
+    <task id="LOCAL-00006" summary="removing uneeded files">
+      <created>1556598091558</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1556598091558</updated>
+    </task>
+    <task id="LOCAL-00007" summary="removing uneeded files">
+      <created>1556599285883</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1556599285883</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8376000" />
+    <option name="totallyTimeSpent" value="12749000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21916972" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22161172" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -325,9 +661,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="sbt-shell-toolwindow" order="7" weight="0.32983744" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.61734694" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32959184" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4993895" weight="0.40918368" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.501221" side_tool="true" visible="true" weight="0.21530612" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="10" sideWeight="0.498779" visible="true" weight="0.21530612" />
       <window_info anchor="bottom" id="Build" order="11" weight="0.32983744" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32983744" />
       <window_info anchor="bottom" id="Dependency Viewer" order="13" weight="0.39695856" />
@@ -340,7 +676,7 @@
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="right" id="sbt" order="4" />
       <window_info anchor="right" id="Module Dependencies" order="5" visible="true" weight="0.32977587" />
-      <window_info anchor="right" x="0" y="0" width="370" height="850" id="Documentation" order="6" side_tool="true" weight="0.1965812" />
+      <window_info anchor="right" x="0" y="0" width="370" height="850" id="Documentation" order="6" side_tool="true" weight="0.26312578" />
       <window_info anchor="right" id="SciView" order="7" />
       <window_info anchor="right" id="Database" order="8" />
     </layout>
@@ -379,6 +715,43 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="Removing uneeded files and Adding Cam code to correct directory" />
+    <MESSAGE value="Committing best model" />
+    <MESSAGE value="Adding final submission zip" />
+    <MESSAGE value="removing uneeded files" />
+    <option name="LAST_COMMIT_MESSAGE" value="removing uneeded files" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
@@ -458,13 +831,6 @@
     <entry file="file://$PROJECT_DIR$/preprocessing/view1_frontal.jpg" />
     <entry file="file://$PROJECT_DIR$/preprocessing/images/view1_frontal.jpg" />
     <entry file="file://$PROJECT_DIR$/preprocessing/images/view2_lateral.jpg" />
-    <entry file="file://$PROJECT_DIR$/preprocessing/src/main/scala/edu/chexpert/App.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="577">
-          <caret line="154" lean-forward="true" selection-start-line="154" selection-end-line="154" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/nih_labels.csv">
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="2417">
@@ -480,6 +846,9 @@
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/model/ChexDataset.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -511,16 +880,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/environment.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/ChexModel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
+        <state relative-caret-position="3000">
           <caret line="229" selection-start-line="229" selection-end-line="229" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
@@ -528,13 +890,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/model/environment.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/BestModel/aucs.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/CAM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="93" column="23" selection-start-line="93" selection-start-column="23" selection-end-line="93" selection-end-column="23" />
+        <state relative-caret-position="108">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1620">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/ModelCheckPoint">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="135">
+            <caret line="5" selection-start-line="5" selection-end-line="5" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/preprocessing/src/main/scala/edu/chexpert/App.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/preprocessing/build.sbt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
